@@ -1,21 +1,42 @@
-# Importing required libraries
-
 import urllib2
-import urllib
-from bs4 import BeautifulSoup
-from bs4 import NavigableString
-import requests
-import lxml
-"""
-f = open("all_pokemon.txt","r")
 
-for x in f:
-	if (x != ""):
-		response = urllib2.urlopen("https://www.pokemon.com/us/pokedex/"+x)
-		page_source = response.read()
-"""
+response = urllib2.urlopen("https://www.pokemon.com/us/pokedex/bulbasaur")
 
-url = "https://www.pokemon.com/us/pokedex/bulbasaur"
+page = response.read()
 
-response = urllib
+out = open("hi.txt", "w")
+out.write(page)
+out.close()
 
+inq = open("hi.txt", "r")
+for x in inq:
+	search = "<span class=\"attribute-title\">Height</span>"
+	if search in x:
+    	a =  next(inq)
+    	a = ' '.join(a.split())
+    	# print a
+    	a = a[30:-7]
+    	print "Height = " + a
+inq.close()
+
+inq = open("hi.txt", "r")
+for x in inq:
+	search = "<span class=\"attribute-title\">Category</span>"
+	if search in x:
+    	a =  next(inq)
+    	a = ' '.join(a.split())
+    	# print a
+    	a = a[30:-7]
+    	print "Catogory = " + a
+inq.close()
+
+inq = open("hi.txt", "r")
+for x in inq:
+	search = "<span class=\"attribute-title\">Weight</span>"
+  	if search in x:
+    	a =  next(inq)
+    	a = ' '.join(a.split())
+    	# print a
+    	a = a[30:-7]
+    	print "Weight = " + a
+inq.close()
