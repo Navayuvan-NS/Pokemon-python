@@ -4,11 +4,11 @@ response = urllib2.urlopen("https://www.pokemon.com/us/pokedex/bulbasaur")
 
 page = response.read()
 
-out = open("hi.txt", "w")
+out = open("html.txt", "w")
 out.write(page)
 out.close()
 
-inq = open("hi.txt", "r")
+inq = open("html.txt", "r")
 for x in inq:
 	search = "<span class=\"attribute-title\">Height</span>"
 	if search in x:
@@ -19,7 +19,7 @@ for x in inq:
     	print "Height = " + a
 inq.close()
 
-inq = open("hi.txt", "r")
+inq = open("html.txt", "r")
 for x in inq:
 	search = "<span class=\"attribute-title\">Category</span>"
 	if search in x:
@@ -30,7 +30,7 @@ for x in inq:
     	print "Catogory = " + a
 inq.close()
 
-inq = open("hi.txt", "r")
+inq = open("html.txt", "r")
 for x in inq:
 	search = "<span class=\"attribute-title\">Weight</span>"
   	if search in x:
