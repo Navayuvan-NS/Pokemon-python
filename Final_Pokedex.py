@@ -1,11 +1,122 @@
 import Tkinter
 from Tkinter import *
 import ttk
+import urllib2
 
 class main:
 
 	def __init__(self):
 		self.gui()
+
+	def getUrl(self):
+		response = urllib2.urlopen("https://www.pokemon.com/us/pokedex/pikachu")
+
+		page = response.read()
+
+		out = open("html.txt", "w")
+		out.write(page)
+		out.close()
+
+		q = 0
+		inq = open("html.txt", "r")
+		for x in inq:
+			search = "<span class=\"attribute-title\">Height</span>"
+
+			if search in x:
+				q = q + 1
+			if search in x and q == 1:
+				a =  next(inq)
+				a = ' '.join(a.split())
+				# print a
+				a = a[30:-7]
+				print "Height = " + a
+		inq.close()
+
+		q = 0
+		inq = open("html.txt", "r")
+		for x in inq:
+			search = "<span class=\"attribute-title\">Category</span>"
+			if search in x:
+				q = q + 1
+			if search in x and q == 1:
+				a =  next(inq)
+				a = ' '.join(a.split())
+				# print a
+				a = a[30:-7]
+				print "Catogory = " + a
+		inq.close()
+
+		q = 0
+		inq = open("html.txt", "r")
+		for x in inq:
+			search = "<span class=\"attribute-title\">Weight</span>"
+			if search in x:
+				q = q + 1
+			if search in x and q == 1:
+				a =  next(inq)
+				a = ' '.join(a.split())
+				# print a
+				a = a[30:-7]
+				print "Weight = " + a
+		inq.close()
+
+
+		inq = open("html.txt", "r")
+		q = 0
+		for x in inq:
+			search = "<span class=\"attribute-title\">Abilities</span>"
+		  	if search in x:
+				q = q + 1
+			
+			searcht = "<span class=\"attribute-value\">"
+			if searcht in x and q == 1:
+				a = ' '.join(x.split())
+				a = a[30:-7]
+				print "Abilities " + a
+			if( q == 1) and (' '.join(next(inq).split()) == "</div>"):
+				break
+		inq.close()
+
+		inq = open("html.txt", "r")
+		q = 0
+		for x in inq:
+			search = "<div class=\"dtm-type\">"
+		  	if search in x:
+		  		q = q + 1
+			
+			searcht = "<a href=\"/us/pokedex/?type"
+			if searcht in x and q == 1:
+				a1 = ' '.join(x.split())
+				a1 = a1[27:-4]
+				a = ""
+				for w in range(len(a1)):
+					if a1[w] == "\"":
+						break
+					else:
+						a = a+a1[w]
+
+				print "Type " + a
+			if( q == 1) and (' '.join(next(inq).split()) == "</div>"):
+				break
+		inq.close()
+
+		inq = open("html.txt", "r")
+		q = 0
+		for x in inq:
+			search = "<div class=\"dtm-weaknesses\">"
+		  	if search in x:
+				q = q + 1
+
+			searcht = "<span>"
+			if searcht in x and q == 1:
+				
+				a1 = ' '.join(x.split())
+				a1 = a1[6:]
+				print "Weakness " + a1 
+
+			if( q == 1) and ("</div>" in ' '.join(next(inq).split())):
+				break
+		inq.close()
 
 	def gui(self):
 
@@ -34,7 +145,7 @@ class main:
 		self.subframe1.grid(row=0,column=0,columnspan=1)
 		self.subframe1.pack_propagate(0)
 
-		self.btn_fpd = Button(self.subframe1, width = 12, height=3, text="Fetch \n Pokemon Data", bg="yellow", fg="black")
+		self.btn_fpd = Button(self.subframe1, width = 12, height=3, text="Fetch \n Pokemon Data", bg="yellow", fg="black", command = self.getUrl)
 		self.btn_fpd.pack(side=TOP, expand=YES)
 
 		self.subframe2 = Frame(self.frame2, width=400, height=120,bg="red")
