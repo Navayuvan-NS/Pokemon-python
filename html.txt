@@ -9,30 +9,32 @@
 <html class="no-js " lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQ4OWFZXGwIAXFZTBgI="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(21),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{l?l-=1:o(s||new UncaughtException(t,e,n),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t,e){var n=e?null:c.now();i("err",[t,n])}var i=t("handle"),a=t(22),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,p="nr@seenError",l=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(13),t(12),"addEventListener"in window&&t(6),c.xhrWrappable&&t(14),d=!0)}s.on("fn-start",function(t,e,n){d&&(l+=1)}),s.on("fn-err",function(t,e,n){d&&!n[p]&&(f(n,p,function(){return!0}),this.thrown=!0,o(n))}),s.on("fn-end",function(){d&&!this.thrown&&l>0&&(l-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(){M++,N=y.hash,this[u]=g.now()}function o(){M--,y.hash!==N&&i(0,!0);var t=g.now();this[h]=~~this[h]+t-this[u],this[d]=t}function i(t,e){E.emit("newURL",[""+y,e])}function a(t,e){t.on(e,function(){this[e]=g.now()})}var s="-start",c="-end",f="-body",u="fn"+s,d="fn"+c,p="cb"+s,l="cb"+c,h="jsTime",m="fetch",v="addEventListener",w=window,y=w.location,g=t("loader");if(w[v]&&g.xhrWrappable){var b=t(10),x=t(11),E=t(8),O=t(6),P=t(13),R=t(7),T=t(14),L=t(9),j=t("ee"),S=j.get("tracer");t(15),g.features.spa=!0;var N,M=0;j.on(u,r),j.on(p,r),j.on(d,o),j.on(l,o),j.buffer([u,d,"xhr-done","xhr-resolved"]),O.buffer([u]),P.buffer(["setTimeout"+c,"clearTimeout"+s,u]),T.buffer([u,"new-xhr","send-xhr"+s]),R.buffer([m+s,m+"-done",m+f+s,m+f+c]),E.buffer(["newURL"]),b.buffer([u]),x.buffer(["propagate",p,l,"executor-err","resolve"+s]),S.buffer([u,"no-"+u]),L.buffer(["new-jsonp","cb-start","jsonp-error","jsonp-end"]),a(T,"send-xhr"+s),a(j,"xhr-resolved"),a(j,"xhr-done"),a(R,m+s),a(R,m+"-done"),a(L,"new-jsonp"),a(L,"jsonp-end"),a(L,"cb-start"),E.on("pushState-end",i),E.on("replaceState-end",i),w[v]("hashchange",i,!0),w[v]("load",i,!0),w[v]("popstate",function(){i(0,M>1)},!0)}},{}],5:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(13),s=t(12),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",p="resource",l="-start",h="-end",m="fn"+l,v="fn"+h,w="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(8);var b=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof b&&(this.bstStart=g.now())}),o.on(v,function(t,e){var n=t[0];n instanceof b&&i("bst",[n,e,this.bstStart,g.now()])}),a.on(m,function(t,e,n){this.bstStart=g.now(),this.bstType=n}),a.on(v,function(t,e){i(w,[e,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(v,function(t,e){i(w,[e,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+l,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],6:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(24)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],7:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=r.apply(this,arguments);return o.emit(n+"start",arguments,t),t.then(function(e){return o.emit(n+"end",[null,e],t),e},function(e){throw o.emit(n+"end",[e],t),e})})}var o=t("ee").get("fetch"),i=t(21);e.exports=o;var a=window,s="fetch-",c=s+"body-",f=["arrayBuffer","blob","json","text","formData"],u=a.Request,d=a.Response,p=a.fetch,l="prototype";u&&d&&p&&(i(f,function(t,e){r(u[l],e,c),r(d[l],e,c)}),r(a,"fetch",s),o.on(s+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),o.emit(s+"done",[null,e],n)}else o.emit(s+"done",[t],n)}))},{}],8:[function(t,e,n){var r=t("ee").get("history"),o=t(24)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],9:[function(t,e,n){function r(t){function e(){c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}function n(){c.emit("jsonp-error",[],p),c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}var r=t&&"string"==typeof t.nodeName&&"script"===t.nodeName.toLowerCase();if(r){var o="function"==typeof t.addEventListener;if(o){var a=i(t.src);if(a){var u=s(a),d="function"==typeof u.parent[u.key];if(d){var p={};f.inPlace(u.parent,[u.key],"cb-",p),t.addEventListener("load",e,!1),t.addEventListener("error",n,!1),c.emit("new-jsonp",[t.src],p)}}}}}function o(){return"addEventListener"in window}function i(t){var e=t.match(u);return e?e[1]:null}function a(t,e){var n=t.match(p),r=n[1],o=n[3];return o?a(o,e[r]):e[r]}function s(t){var e=t.match(d);return e&&e.length>=3?{key:e[2],parent:a(e[1],window)}:{key:t,parent:window}}var c=t("ee").get("jsonp"),f=t(24)(c);if(e.exports=c,o()){var u=/[?&](?:callback|cb)=([^&#]+)/,d=/(.*)\.([^.]+)/,p=/^(\w+)(\.|$)(.*)$/,l=["appendChild","insertBefore","replaceChild"];f.inPlace(HTMLElement.prototype,l,"dom-"),f.inPlace(HTMLHeadElement.prototype,l,"dom-"),f.inPlace(HTMLBodyElement.prototype,l,"dom-"),c.on("dom-start",function(t){r(t[0])})}},{}],10:[function(t,e,n){var r=t("ee").get("mutation"),o=t(24)(r),i=NREUM.o.MO;e.exports=r,i&&(window.MutationObserver=function(t){return this instanceof i?new i(o(t,"fn-")):i.apply(this,arguments)},MutationObserver.prototype=i.prototype)},{}],11:[function(t,e,n){function r(t){var e=a.context(),n=s(t,"executor-",e),r=new f(n);return a.context(r).getCtx=function(){return e},a.emit("new-promise",[r,e],e),r}function o(t,e){return e}var i=t(24),a=t("ee").get("promise"),s=i(a),c=t(21),f=NREUM.o.PR;e.exports=a,f&&(window.Promise=r,["all","race"].forEach(function(t){var e=f[t];f[t]=function(n){function r(t){return function(){a.emit("propagate",[null,!o],i),o=o||!t}}var o=!1;c(n,function(e,n){Promise.resolve(n).then(r("all"===t),r(!1))});var i=e.apply(f,arguments),s=f.resolve(i);return s}}),["resolve","reject"].forEach(function(t){var e=f[t];f[t]=function(t){var n=e.apply(f,arguments);return t!==n&&a.emit("propagate",[t,!0],n),n}}),f.prototype["catch"]=function(t){return this.then(null,t)},f.prototype=Object.create(f.prototype,{constructor:{value:r}}),c(Object.getOwnPropertyNames(f),function(t,e){try{r[e]=f[e]}catch(n){}}),a.on("executor-start",function(t){t[0]=s(t[0],"resolve-",this),t[1]=s(t[1],"resolve-",this)}),a.on("executor-err",function(t,e,n){t[1](n)}),s.inPlace(f.prototype,["then"],"then-",o),a.on("then-start",function(t,e){this.promise=e,t[0]=s(t[0],"cb-",this),t[1]=s(t[1],"cb-",this)}),a.on("then-end",function(t,e,n){this.nextPromise=n;var r=this.promise;a.emit("propagate",[r,!0],n)}),a.on("cb-end",function(t,e,n){a.emit("propagate",[n,!0],this.nextPromise)}),a.on("propagate",function(t,e,n){this.getCtx&&!e||(this.getCtx=function(){if(t instanceof Promise)var e=a.context(t);return e&&e.getCtx?e.getCtx():this})}),r.toString=function(){return""+f})},{}],12:[function(t,e,n){var r=t("ee").get("raf"),o=t(24)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],13:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(24)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],14:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(x?x.then(a):v?v(a):(E=-E,O.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(6);var f=t("ee"),u=f.get("xhr"),d=t(24)(u),p=NREUM.o,l=p.XHR,h=p.MO,m=p.PR,v=p.SI,w="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];e.exports=u;var b=window.XMLHttpRequest=function(t){var e=new l(t);try{u.emit("new-xhr",[e],e),e.addEventListener(w,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(l,b),b.prototype=l.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var x=m&&m.resolve();if(!v&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===w||a()})},{}],15:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=a.now()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(e.cat=c.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(16),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,p=t("id"),l=t(19),h=t(18),m=window.XMLHttpRequest;a.features.xhr=!0,t(14),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,l&&(l>34||l<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<d;s++)e.addEventListener(u[s],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)})}},{}],16:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],17:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[f.now()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(21),s=t(22),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){u[e]=o(p+e,!0,"api")}),u.addPageAction=o(p+"addPageAction",!0),u.setCurrentRouteName=o(p+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[f.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=o(l+e)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now()])}},{}],18:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],19:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],20:[function(t,e,n){function r(t,e){if(!o)return!1;if(t!==o)return!1;if(!e)return!0;if(!i)return!1;for(var n=i.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}e.exports={agent:o,version:i,match:r}},{}],21:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],22:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],23:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],24:[function(t,e,n){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(22),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t,e){function n(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(f){p([f,"",[r,a,o],s])}u(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(e+"err",[r,a,d],s),d}finally{u(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,e,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<e.length;c++)s=e[c],a=t[s],r(a)||(t[s]=n(a,f?s+o:o,i,s))}function u(n,r,o){if(!c||e){var i=c;c=!0;try{t.emit(n,r,o,e)}catch(a){p([a,n,r,o])}c=i}}function d(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){p([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function p(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),n.inPlace=f,n.flag=a,n}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function n(n,r,o,i){if(!p.aborted||i){t&&t(n,r,o);for(var a=e(o),s=m(n),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[g[n]];return d&&d.push([b,n,r,a]),a}}function l(t,e){y[t]=m(t).concat(e)}function h(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return y[t]||[]}function v(t){return d[t]=d[t]||o(n)}function w(t,e){f(t,function(t,n){e=e||"feature",g[n]=e,e in u||(u[e]=[])})}var y={},g={},b={on:l,addEventListener:l,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(u.api||u.feature)&&(p.aborted=!0,u=p.backlog={})}var s="nr@context",c=t("gos"),f=t(21),u={},d={},p=e.exports=o();p.backlog=u},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!E++){var t=x.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(g,function(e,n){t[e]||(t[e]=n)}),c("mark",["onload",a()+x.offset],null,"api");var n=l.createElement("script");n.src="https://"+t.agent,e.parentNode.insertBefore(n,e)}}function o(){"complete"===l.readyState&&i()}function i(){c("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-x.offset}var s=(new Date).getTime(),c=t("handle"),f=t(21),u=t("ee"),d=t(20),p=window,l=p.document,h="addEventListener",m="attachEvent",v=p.XMLHttpRequest,w=v&&v.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:v,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,g={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-spa-1099.min.js"},b=v&&w&&w[h]&&!/CriOS/.test(navigator.userAgent),x=e.exports={offset:s,now:a,origin:y,features:{},xhrWrappable:b,userAgent:d};t(17),l[h]?(l[h]("DOMContentLoaded",i,!1),p[h]("load",r,!1)):(l[m]("onreadystatechange",o),p[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(23)},{}]},{},["loader",2,15,5,3,4]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"ba34eb72cb","agent":"","transactionName":"MgFaZkVVWBBXABIPWAtLfkdZV0IKWQ1JC1YMChZCWF9TB1MbSBBeABNLCHNRQgJfDyQfZAkRXxxQUUI=","applicationID":"1087113,1087114","errorBeacon":"bam.nr-data.net","applicationTime":912}</script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQ4OWFZXGwIAXFZTBgI="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(21),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{l?l-=1:o(s||new UncaughtException(t,e,n),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t,e){var n=e?null:c.now();i("err",[t,n])}var i=t("handle"),a=t(22),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,p="nr@seenError",l=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(13),t(12),"addEventListener"in window&&t(6),c.xhrWrappable&&t(14),d=!0)}s.on("fn-start",function(t,e,n){d&&(l+=1)}),s.on("fn-err",function(t,e,n){d&&!n[p]&&(f(n,p,function(){return!0}),this.thrown=!0,o(n))}),s.on("fn-end",function(){d&&!this.thrown&&l>0&&(l-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(){M++,N=y.hash,this[u]=g.now()}function o(){M--,y.hash!==N&&i(0,!0);var t=g.now();this[h]=~~this[h]+t-this[u],this[d]=t}function i(t,e){E.emit("newURL",[""+y,e])}function a(t,e){t.on(e,function(){this[e]=g.now()})}var s="-start",c="-end",f="-body",u="fn"+s,d="fn"+c,p="cb"+s,l="cb"+c,h="jsTime",m="fetch",v="addEventListener",w=window,y=w.location,g=t("loader");if(w[v]&&g.xhrWrappable){var b=t(10),x=t(11),E=t(8),O=t(6),P=t(13),R=t(7),T=t(14),L=t(9),j=t("ee"),S=j.get("tracer");t(15),g.features.spa=!0;var N,M=0;j.on(u,r),j.on(p,r),j.on(d,o),j.on(l,o),j.buffer([u,d,"xhr-done","xhr-resolved"]),O.buffer([u]),P.buffer(["setTimeout"+c,"clearTimeout"+s,u]),T.buffer([u,"new-xhr","send-xhr"+s]),R.buffer([m+s,m+"-done",m+f+s,m+f+c]),E.buffer(["newURL"]),b.buffer([u]),x.buffer(["propagate",p,l,"executor-err","resolve"+s]),S.buffer([u,"no-"+u]),L.buffer(["new-jsonp","cb-start","jsonp-error","jsonp-end"]),a(T,"send-xhr"+s),a(j,"xhr-resolved"),a(j,"xhr-done"),a(R,m+s),a(R,m+"-done"),a(L,"new-jsonp"),a(L,"jsonp-end"),a(L,"cb-start"),E.on("pushState-end",i),E.on("replaceState-end",i),w[v]("hashchange",i,!0),w[v]("load",i,!0),w[v]("popstate",function(){i(0,M>1)},!0)}},{}],5:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(13),s=t(12),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",p="resource",l="-start",h="-end",m="fn"+l,v="fn"+h,w="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(8);var b=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof b&&(this.bstStart=g.now())}),o.on(v,function(t,e){var n=t[0];n instanceof b&&i("bst",[n,e,this.bstStart,g.now()])}),a.on(m,function(t,e,n){this.bstStart=g.now(),this.bstType=n}),a.on(v,function(t,e){i(w,[e,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(v,function(t,e){i(w,[e,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+l,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],6:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(24)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],7:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=r.apply(this,arguments);return o.emit(n+"start",arguments,t),t.then(function(e){return o.emit(n+"end",[null,e],t),e},function(e){throw o.emit(n+"end",[e],t),e})})}var o=t("ee").get("fetch"),i=t(21);e.exports=o;var a=window,s="fetch-",c=s+"body-",f=["arrayBuffer","blob","json","text","formData"],u=a.Request,d=a.Response,p=a.fetch,l="prototype";u&&d&&p&&(i(f,function(t,e){r(u[l],e,c),r(d[l],e,c)}),r(a,"fetch",s),o.on(s+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),o.emit(s+"done",[null,e],n)}else o.emit(s+"done",[t],n)}))},{}],8:[function(t,e,n){var r=t("ee").get("history"),o=t(24)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],9:[function(t,e,n){function r(t){function e(){c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}function n(){c.emit("jsonp-error",[],p),c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}var r=t&&"string"==typeof t.nodeName&&"script"===t.nodeName.toLowerCase();if(r){var o="function"==typeof t.addEventListener;if(o){var a=i(t.src);if(a){var u=s(a),d="function"==typeof u.parent[u.key];if(d){var p={};f.inPlace(u.parent,[u.key],"cb-",p),t.addEventListener("load",e,!1),t.addEventListener("error",n,!1),c.emit("new-jsonp",[t.src],p)}}}}}function o(){return"addEventListener"in window}function i(t){var e=t.match(u);return e?e[1]:null}function a(t,e){var n=t.match(p),r=n[1],o=n[3];return o?a(o,e[r]):e[r]}function s(t){var e=t.match(d);return e&&e.length>=3?{key:e[2],parent:a(e[1],window)}:{key:t,parent:window}}var c=t("ee").get("jsonp"),f=t(24)(c);if(e.exports=c,o()){var u=/[?&](?:callback|cb)=([^&#]+)/,d=/(.*)\.([^.]+)/,p=/^(\w+)(\.|$)(.*)$/,l=["appendChild","insertBefore","replaceChild"];f.inPlace(HTMLElement.prototype,l,"dom-"),f.inPlace(HTMLHeadElement.prototype,l,"dom-"),f.inPlace(HTMLBodyElement.prototype,l,"dom-"),c.on("dom-start",function(t){r(t[0])})}},{}],10:[function(t,e,n){var r=t("ee").get("mutation"),o=t(24)(r),i=NREUM.o.MO;e.exports=r,i&&(window.MutationObserver=function(t){return this instanceof i?new i(o(t,"fn-")):i.apply(this,arguments)},MutationObserver.prototype=i.prototype)},{}],11:[function(t,e,n){function r(t){var e=a.context(),n=s(t,"executor-",e),r=new f(n);return a.context(r).getCtx=function(){return e},a.emit("new-promise",[r,e],e),r}function o(t,e){return e}var i=t(24),a=t("ee").get("promise"),s=i(a),c=t(21),f=NREUM.o.PR;e.exports=a,f&&(window.Promise=r,["all","race"].forEach(function(t){var e=f[t];f[t]=function(n){function r(t){return function(){a.emit("propagate",[null,!o],i),o=o||!t}}var o=!1;c(n,function(e,n){Promise.resolve(n).then(r("all"===t),r(!1))});var i=e.apply(f,arguments),s=f.resolve(i);return s}}),["resolve","reject"].forEach(function(t){var e=f[t];f[t]=function(t){var n=e.apply(f,arguments);return t!==n&&a.emit("propagate",[t,!0],n),n}}),f.prototype["catch"]=function(t){return this.then(null,t)},f.prototype=Object.create(f.prototype,{constructor:{value:r}}),c(Object.getOwnPropertyNames(f),function(t,e){try{r[e]=f[e]}catch(n){}}),a.on("executor-start",function(t){t[0]=s(t[0],"resolve-",this),t[1]=s(t[1],"resolve-",this)}),a.on("executor-err",function(t,e,n){t[1](n)}),s.inPlace(f.prototype,["then"],"then-",o),a.on("then-start",function(t,e){this.promise=e,t[0]=s(t[0],"cb-",this),t[1]=s(t[1],"cb-",this)}),a.on("then-end",function(t,e,n){this.nextPromise=n;var r=this.promise;a.emit("propagate",[r,!0],n)}),a.on("cb-end",function(t,e,n){a.emit("propagate",[n,!0],this.nextPromise)}),a.on("propagate",function(t,e,n){this.getCtx&&!e||(this.getCtx=function(){if(t instanceof Promise)var e=a.context(t);return e&&e.getCtx?e.getCtx():this})}),r.toString=function(){return""+f})},{}],12:[function(t,e,n){var r=t("ee").get("raf"),o=t(24)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],13:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(24)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],14:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(x?x.then(a):v?v(a):(E=-E,O.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(6);var f=t("ee"),u=f.get("xhr"),d=t(24)(u),p=NREUM.o,l=p.XHR,h=p.MO,m=p.PR,v=p.SI,w="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];e.exports=u;var b=window.XMLHttpRequest=function(t){var e=new l(t);try{u.emit("new-xhr",[e],e),e.addEventListener(w,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(l,b),b.prototype=l.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var x=m&&m.resolve();if(!v&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===w||a()})},{}],15:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=a.now()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(e.cat=c.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(16),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,p=t("id"),l=t(19),h=t(18),m=window.XMLHttpRequest;a.features.xhr=!0,t(14),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,l&&(l>34||l<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<d;s++)e.addEventListener(u[s],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)})}},{}],16:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],17:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[f.now()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(21),s=t(22),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){u[e]=o(p+e,!0,"api")}),u.addPageAction=o(p+"addPageAction",!0),u.setCurrentRouteName=o(p+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[f.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=o(l+e)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now()])}},{}],18:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],19:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],20:[function(t,e,n){function r(t,e){if(!o)return!1;if(t!==o)return!1;if(!e)return!0;if(!i)return!1;for(var n=i.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}e.exports={agent:o,version:i,match:r}},{}],21:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],22:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],23:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],24:[function(t,e,n){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(22),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t,e){function n(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(f){p([f,"",[r,a,o],s])}u(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(e+"err",[r,a,d],s),d}finally{u(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,e,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<e.length;c++)s=e[c],a=t[s],r(a)||(t[s]=n(a,f?s+o:o,i,s))}function u(n,r,o){if(!c||e){var i=c;c=!0;try{t.emit(n,r,o,e)}catch(a){p([a,n,r,o])}c=i}}function d(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){p([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function p(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),n.inPlace=f,n.flag=a,n}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function n(n,r,o,i){if(!p.aborted||i){t&&t(n,r,o);for(var a=e(o),s=m(n),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[g[n]];return d&&d.push([b,n,r,a]),a}}function l(t,e){y[t]=m(t).concat(e)}function h(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return y[t]||[]}function v(t){return d[t]=d[t]||o(n)}function w(t,e){f(t,function(t,n){e=e||"feature",g[n]=e,e in u||(u[e]=[])})}var y={},g={},b={on:l,addEventListener:l,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(u.api||u.feature)&&(p.aborted=!0,u=p.backlog={})}var s="nr@context",c=t("gos"),f=t(21),u={},d={},p=e.exports=o();p.backlog=u},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!E++){var t=x.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(g,function(e,n){t[e]||(t[e]=n)}),c("mark",["onload",a()+x.offset],null,"api");var n=l.createElement("script");n.src="https://"+t.agent,e.parentNode.insertBefore(n,e)}}function o(){"complete"===l.readyState&&i()}function i(){c("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-x.offset}var s=(new Date).getTime(),c=t("handle"),f=t(21),u=t("ee"),d=t(20),p=window,l=p.document,h="addEventListener",m="attachEvent",v=p.XMLHttpRequest,w=v&&v.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:v,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,g={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-spa-1099.min.js"},b=v&&w&&w[h]&&!/CriOS/.test(navigator.userAgent),x=e.exports={offset:s,now:a,origin:y,features:{},xhrWrappable:b,userAgent:d};t(17),l[h]?(l[h]("DOMContentLoaded",i,!1),p[h]("load",r,!1)):(l[m]("onreadystatechange",o),p[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(23)},{}]},{},["loader",2,15,5,3,4]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"ba34eb72cb","agent":"","transactionName":"MgFaZkVVWBBXABIPWAtLfkdZV0IKWQ1JC1YMChZCWF9TB1MbSBBeABNLCHNRQgJfDyQfZAkRXxxQUUI=","applicationID":"1087113,1087114","errorBeacon":"bam.nr-data.net","applicationTime":1367}</script>
   <meta http-equiv="Content-Language" content="en" />
   <meta name="language" content="en" />
   <link rel="shortcut icon" href="https://assets.pokemon.com/static2/_ui/img/favicon.ico" />
 
-  <title>Jigglypuff | Pokédex</title>
+  <title>Pikachu | Pokédex</title>
 
 
 
-  <meta name="description" content="When this Pokémon sings, it never pauses to breathe.
-If it is in a battle against an opponent that does not easily
-fall asleep, Jigglypuff cannot breathe, endangering its life." />
+  <meta name="description" content="This Pokémon has electricity-storing pouches on its cheeks.
+These appear to become electrically charged during the night
+while Pikachu sleeps. It occasionally discharges electricity
+when it is dozy after waking up." />
 
 
 
-  <meta property="og:image" content="https://assets.pokemon.com/assets/cms2/img/pokedex/full/039.png" />
+  <meta property="og:image" content="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" />
   <meta property="og:image:width" content="215" />
   <meta property="og:image:height" content="215" />
-  <meta property="og:description" content="When this Pokémon sings, it never pauses to breathe.
-If it is in a battle against an opponent that does not easily
-fall asleep, Jigglypuff cannot breathe, endangering its life." />
-  <meta property="og:title" content="Jigglypuff | Pokédex | More at Pokemon.com" />
+  <meta property="og:description" content="This Pokémon has electricity-storing pouches on its cheeks.
+These appear to become electrically charged during the night
+while Pikachu sleeps. It occasionally discharges electricity
+when it is dozy after waking up." />
+  <meta property="og:title" content="Pikachu | Pokédex | More at Pokemon.com" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:image" content="https://assets.pokemon.com/assets/cms2/img/pokedex/full/039.png" />
+  <meta name="twitter:image" content="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" />
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -42,22 +44,22 @@ fall asleep, Jigglypuff cannot breathe, endangering its life." />
 
   
   
-  <link rel="alternate" hreflang="en-gb" href="https://www.pokemon.com/uk/pokedex/jigglypuff" />
-  <link rel="alternate" hreflang="ru" href="https://www.pokemon.com/ru/pokedex/jigglypuff" />
-  <link rel="alternate" hreflang="fr" href="https://www.pokemon.com/fr/pokedex/rondoudou" />
-  <link rel="alternate" hreflang="en" href="https://www.pokemon.com/us/pokedex/jigglypuff" />
-  <link rel="alternate" hreflang="nl" href="https://www.pokemon.com/nl/pokedex/jigglypuff" />
-  <link rel="alternate" hreflang="nb" href="https://www.pokemon.com/no/pokedex/jigglypuff" />
-  <link rel="alternate" hreflang="de" href="https://www.pokemon.com/de/pokedex/pummeluff" />
-  <link rel="alternate" hreflang="it" href="https://www.pokemon.com/it/pokedex/jigglypuff" />
-  <link rel="alternate" hreflang="sv" href="https://www.pokemon.com/se/pokedex/jigglypuff" />
-  <link rel="alternate" hreflang="pt-br" href="https://www.pokemon.com/br/pokedex/jigglypuff" />
-  <link rel="alternate" hreflang="fi" href="https://www.pokemon.com/fi/pokedex/jigglypuff" />
-  <link rel="alternate" hreflang="da" href="https://www.pokemon.com/dk/pokedex/jigglypuff" />
-  <link rel="alternate" hreflang="es" href="https://www.pokemon.com/es/pokedex/jigglypuff" />
+  <link rel="alternate" hreflang="en-gb" href="https://www.pokemon.com/uk/pokedex/pikachu" />
+  <link rel="alternate" hreflang="ru" href="https://www.pokemon.com/ru/pokedex/pikachu" />
+  <link rel="alternate" hreflang="fr" href="https://www.pokemon.com/fr/pokedex/pikachu" />
+  <link rel="alternate" hreflang="en" href="https://www.pokemon.com/us/pokedex/pikachu" />
+  <link rel="alternate" hreflang="nl" href="https://www.pokemon.com/nl/pokedex/pikachu" />
+  <link rel="alternate" hreflang="nb" href="https://www.pokemon.com/no/pokedex/pikachu" />
+  <link rel="alternate" hreflang="de" href="https://www.pokemon.com/de/pokedex/pikachu" />
+  <link rel="alternate" hreflang="it" href="https://www.pokemon.com/it/pokedex/pikachu" />
+  <link rel="alternate" hreflang="sv" href="https://www.pokemon.com/se/pokedex/pikachu" />
+  <link rel="alternate" hreflang="pt-br" href="https://www.pokemon.com/br/pokedex/pikachu" />
+  <link rel="alternate" hreflang="fi" href="https://www.pokemon.com/fi/pokedex/pikachu" />
+  <link rel="alternate" hreflang="da" href="https://www.pokemon.com/dk/pokedex/pikachu" />
+  <link rel="alternate" hreflang="es" href="https://www.pokemon.com/es/pokedex/pikachu" />
 
     <!-- google search appliance meta tags -->
-<meta name="pkm-title" content="Jigglypuff" /><meta name="pkm-category" content="pokedex" /><meta name="pkm-image" content="https://assets.pokemon.com/assets/cms2/img/pokedex/site_search/039.png" /><meta name="pkm-id" content="039" />
+<meta name="pkm-title" content="Pikachu" /><meta name="pkm-category" content="pokedex" /><meta name="pkm-image" content="https://assets.pokemon.com/assets/cms2/img/pokedex/site_search/025.png" /><meta name="pkm-id" content="025" />
 <!-- Adobe Analytics Dynamic Tag Manager -->
 
 <script src="//assets.adobedtm.com/6c671dc48d6617494938091e9ec0e82bd30f1aef/satelliteLib-a75a34bf63254ccd00dc2d4daeb885b0f1eb919a.js"></script>
@@ -65,16 +67,16 @@ fall asleep, Jigglypuff cannot breathe, endangering its life." />
 var re = /:\/\/[^\/]*?(pokemon.com|openroad.ca)\//,
     dataLayer = {
         "SiteValues": {
-            "canonicalPath": "/us/pokedex/jigglypuff",
-            "pageName": "Jigglypuff",
+            "canonicalPath": "/us/pokedex/pikachu",
+            "pageName": "Pikachu",
             "siteSectionL1": "Pokédex",
             "siteSectionL2": "Detail",
-            "siteSectionL3": "Jigglypuff",
+            "siteSectionL3": "Pikachu",
             "businessUnit": "pcom",
             "Language": "en",
             "Internal/External": document.referrer.match(re) ? "internal" : "external",
             "SiteErrorType": "",
-            "website": "wwwa5"
+            "website": "wwwa6"
         },
 
         "Content":{
@@ -164,7 +166,7 @@ var re = /:\/\/[^\/]*?(pokemon.com|openroad.ca)\//,
 
 
   <script>
-    window.token = "uJzbaeyH5jXxqlZ4l2qOxLkNp3bI3sml98pjL70k6tU3YhEL66hTtxSIpl6ijy3J";
+    window.token = "SEWVljtX0Ga1h0BjL5GGfIuLHP2ItEMmsFfGeDggUGEbbgSqQDv6jCULCDcuqMMB";
     window.mockAPI = false;
     window.loginURL = '/us/pokemon-trainer-club/login';
     window.pokemonUI = window.pokemonUI || {};
@@ -294,7 +296,7 @@ var re = /:\/\/[^\/]*?(pokemon.com|openroad.ca)\//,
   <script>
     window.pokemonUI.api = window.pokemonUI.api || {};
     window.pokemonUI.api['pokedex'] = '/us/api/pokedex/';
-    window.pokemonUI.collectiblesSlug = "collectible-jigglypuff";
+    window.pokemonUI.collectiblesSlug = "collectible-pikachu";
   </script>
   <script>
 window.pokemonUI = window.pokemonUI || {};
@@ -339,7 +341,7 @@ window.pokemonUI.collectibles.search = {
   <link rel="stylesheet" href="https://assets.pokemon.com/static2/_ui/css/pokedex.css" />
   
     
-  <link rel="image_src" href="https://assets.pokemon.com/assets/cms2/img/pokedex/full/039.png" />
+  <link rel="image_src" href="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" />
     
   
 
@@ -1689,26 +1691,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   
 <section class="section pokedex-pokemon-header overflow-visible">
   <div class="pokedex-pokemon-pagination">
-    <a href="/us/pokedex/ninetales" class="previous">
+    <a href="/us/pokedex/arbok" class="previous">
       <div class="pokedex-pokemon-pagination-wrapper">
         <span class="icon icon_arrow_sm_left"></span>
-        <span class="pokemon-number">#038</span>
-        <span class="pokemon-name hidden-mobile">Ninetales</span>
+        <span class="pokemon-number">#024</span>
+        <span class="pokemon-name hidden-mobile">Arbok</span>
       </div>
     </a>
 
-    <a href="/us/pokedex/wigglytuff" class="next">
+    <a href="/us/pokedex/raichu" class="next">
       <div class="pokedex-pokemon-pagination-wrapper">
         <span class="icon icon_arrow_sm_right"></span>
-        <span class="pokemon-number">#040</span>
-        <span class="pokemon-name hidden-mobile">Wigglytuff</span>
+        <span class="pokemon-number">#026</span>
+        <span class="pokemon-name hidden-mobile">Raichu</span>
       </div>
     </a>
   </div>
   <div class="pokedex-pokemon-pagination-title">
     <div>
-      Jigglypuff
-      <span class="pokemon-number">#039</span>
+      Pikachu
+      <span class="pokemon-number">#025</span>
     </div>
   </div>
 </section>
@@ -1735,17 +1737,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="profile-images">
 
   
-        <img class="active" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/039.png" alt="Jigglypuff" />
+        <img class="active" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" alt="Pikachu" />
   
 
       </div>
     </div>
 	  <div class="notch-collectibles-large">
-      <div class="collectibles-wrapper" data-collectibles-slug="jigglypuff" data-slug="jigglypuff">
+      <div class="collectibles-wrapper" data-collectibles-slug="pikachu" data-slug="pikachu">
         <div class="collectibles-collection"><a href="#" rel="tooltip" title="Add to My Collection" data-collection="have" data-collection-friends="0 friends have caught this Pokémon"><span class="icon icon_collection"></span></a></div>
 			  <div class="collectibles-wishlist"><a href="#" rel="tooltip" title="Add to My Wish List" data-collection="want" data-collection-friends="0 friends want this Pokémon"><span class="icon icon_wishlist"></span></a></div>
         <div class="collectibles-trade"><a href="#" rel="tooltip" title="Add to My Trade List" data-collection="trade"  data-collection-friends="0 friends want to trade this Pokémon"><span class="icon icon_trade"></span></a></div>
-			  <div class="collectibles-plus"><a rel="tooltip" title="Add to favorites!" class="addToFavorites" data-pokemon-id="39" style="cursor: pointer;"><span class="icon icon_add"></span></a></div>
+			  <div class="collectibles-plus"><a rel="tooltip" title="Add to favorites!" class="addToFavorites" data-pokemon-id="25" style="cursor: pointer;"><span class="icon icon_add"></span></a></div>
 		  </div>
 	  </div>
 
@@ -1755,7 +1757,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <ul>
             <li class="first">
               <ul class="gauge">
-                <li data-value="5" class="meter"></li>
+                <li data-value="2" class="meter"></li>
                 <li></li>
                 <li></li>
                 <li></li>
@@ -1772,7 +1774,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
             <li>
               <ul class="gauge">
-                <li data-value="2" class="meter"></li>
+                <li data-value="3" class="meter"></li>
                 <li></li>
                 <li></li>
                 <li></li>
@@ -1789,7 +1791,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
             <li>
               <ul class="gauge">
-                <li data-value="1" class="meter"></li>
+                <li data-value="2" class="meter"></li>
                 <li></li>
                 <li></li>
                 <li></li>
@@ -1823,7 +1825,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
             <li>
               <ul class="gauge">
-                <li data-value="1" class="meter"></li>
+                <li data-value="2" class="meter"></li>
                 <li></li>
                 <li></li>
                 <li></li>
@@ -1840,7 +1842,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
             <li>
               <ul class="gauge">
-                <li data-value="1" class="meter"></li>
+                <li data-value="5" class="meter"></li>
                 <li></li>
                 <li></li>
                 <li></li>
@@ -1868,16 +1870,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             
                 <p class="version-x
                                   ">
-                  When this Pokémon sings, it never pauses to breathe.
-If it is in a battle against an opponent that does not easily
-fall asleep, Jigglypuff cannot breathe, endangering its life.
+                  This Pokémon has electricity-storing pouches on its cheeks.
+These appear to become electrically charged during the night
+while Pikachu sleeps. It occasionally discharges electricity
+when it is dozy after waking up.
                 </p>
             
                 <p class="version-y
                                   active">
-                  Jigglypuff&#39;s vocal cords can freely adjust the wavelength of its
-voice. This Pokémon uses this ability to sing at precisely the
-right wavelength to make its foes most drowsy.
+                  Whenever Pikachu comes across something new,
+it blasts it with a jolt of electricity. If you come across a
+blackened berry, it&#39;s evidence that this Pokémon mistook the
+intensity of its charge.
                 </p>
             
           
@@ -1899,12 +1903,12 @@ right wavelength to make its foes most drowsy.
             <ul>
               <li>
                 <span class="attribute-title">Height</span>
-                <span class="attribute-value">1' 08"</span>
+                <span class="attribute-value">1' 04"</span>
               </li>
 
               <li>
                 <span class="attribute-title">Weight</span>
-                <span class="attribute-value">12.1 lbs</span>
+                <span class="attribute-value">13.2 lbs</span>
               </li>
 
               <li>
@@ -1923,7 +1927,7 @@ right wavelength to make its foes most drowsy.
             <ul>
               <li>
                 <span class="attribute-title">Category</span>
-                <span class="attribute-value">Balloon</span>
+                <span class="attribute-value">Mouse</span>
               </li>
               <li>
                 <span class="attribute-title">Abilities</span>
@@ -1932,13 +1936,7 @@ right wavelength to make its foes most drowsy.
   
                   <li>
                     <a href="" class="moreInfo">
-                      <span class="attribute-value">Cute Charm</span>
-                    </a>
-                  </li>
-  
-                  <li>
-                    <a href="" class="moreInfo">
-                      <span class="attribute-value">Competitive</span>
+                      <span class="attribute-value">Static</span>
                     </a>
                   </li>
   
@@ -1953,16 +1951,8 @@ right wavelength to make its foes most drowsy.
             <span class="button-close">
               <i class="icon icon_multiply"></i>Close</span>
             <span class="title">Ability Info</span>
-            <h3>Cute Charm</h3>
-            <p>Contact with the Pokémon may cause infatuation.</p>
-          </div>
-  
-          <div class="pokemon-ability-info-detail match">
-            <span class="button-close">
-              <i class="icon icon_multiply"></i>Close</span>
-            <span class="title">Ability Info</span>
-            <h3>Competitive</h3>
-            <p>Boosts the Sp. Atk stat when a stat is lowered.</p>
+            <h3>Static</h3>
+            <p>Contact with the Pokémon may cause paralysis.</p>
           </div>
   
 
@@ -1972,12 +1962,8 @@ right wavelength to make its foes most drowsy.
 	        <div class="dtm-type">
 	          <h3>Type</h3>
 	          <ul>
-	            <li class="background-color-normal">
-	              <a href="/us/pokedex/?type=normal">Normal</a>
-	            </li>
-	
-	            <li class="background-color-fairy middle">
-	              <a href="/us/pokedex/?type=fairy">Fairy</a>
+	            <li class="background-color-electric">
+	              <a href="/us/pokedex/?type=electric">Electric</a>
 	            </li>
 	
 	          </ul>
@@ -1987,17 +1973,9 @@ right wavelength to make its foes most drowsy.
 	          <h3>Weaknesses</h3>
 	          <ul>
 	
-	            <li class="background-color-steel first">
-	              <a href="/us/pokedex/?weakness=steel">
-	                <span>Steel
-	  
-	                </span>
-	              </a>
-	            </li>
-  
-	            <li class="background-color-poison middle">
-	              <a href="/us/pokedex/?weakness=poison">
-	                <span>Poison
+	            <li class="background-color-ground first">
+	              <a href="/us/pokedex/?weakness=ground">
+	                <span>Ground
 	  
 	                </span>
 	              </a>
@@ -2030,21 +2008,19 @@ right wavelength to make its foes most drowsy.
                     
 
 
-<a href="/us/pokedex/igglybuff">
+<a href="/us/pokedex/pichu">
     
-     <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/174.png"
-         alt="Igglybuff" />
+     <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/172.png"
+         alt="Pichu" />
     <h3 class="match">
-        Igglybuff
+        Pichu
         <span class="pokemon-number">
-            #174
+            #172
         </span>
     </h3>
     
     <ul class="evolution-attributes match-height">
-        <li class="background-color-normal match">Normal</li>
-        
-        <li class="background-color-fairy match">Fairy</li>
+        <li class="background-color-electric match">Electric</li>
         
     </ul>
 </a>
@@ -2055,21 +2031,19 @@ right wavelength to make its foes most drowsy.
                     
 
 
-<a href="/us/pokedex/jigglypuff">
+<a href="/us/pokedex/pikachu">
     
-     <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/039.png"
-         alt="Jigglypuff" />
+     <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/025.png"
+         alt="Pikachu" />
     <h3 class="match">
-        Jigglypuff
+        Pikachu
         <span class="pokemon-number">
-            #039
+            #025
         </span>
     </h3>
     
     <ul class="evolution-attributes match-height">
-        <li class="background-color-normal match">Normal</li>
-        
-        <li class="background-color-fairy match">Fairy</li>
+        <li class="background-color-electric match">Electric</li>
         
     </ul>
 </a>
@@ -2080,21 +2054,19 @@ right wavelength to make its foes most drowsy.
                     
 
 
-<a href="/us/pokedex/wigglytuff">
+<a href="/us/pokedex/raichu">
     
-     <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/040.png"
-         alt="Wigglytuff" />
+     <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/026.png"
+         alt="Raichu" />
     <h3 class="match">
-        Wigglytuff
+        Raichu
         <span class="pokemon-number">
-            #040
+            #026
         </span>
     </h3>
     
     <ul class="evolution-attributes match-height">
-        <li class="background-color-normal match">Normal</li>
-        
-        <li class="background-color-fairy match">Fairy</li>
+        <li class="background-color-electric match">Electric</li>
         
     </ul>
 </a>
@@ -2118,27 +2090,27 @@ right wavelength to make its foes most drowsy.
       <div class="add-this">
         
           <a class="addthis_button_facebook exit-link" target="_blank"
-             rel="http://api.addthis.com/oexchange/0.8/forward/facebook/offer?username=tpci&amp;url=https://www.pokemon.com/us/pokedex/jigglypuff">
+             rel="http://api.addthis.com/oexchange/0.8/forward/facebook/offer?username=tpci&amp;url=https://www.pokemon.com/us/pokedex/pikachu">
             <span class="offscreen">facebook</span>
           </a>
 
           <a class="addthis_button_google exit-link" target="_blank"
-             rel="http://api.addthis.com/oexchange/0.8/forward/google_plusone_share/offer?username=tpci&amp;url=https://www.pokemon.com/us/pokedex/jigglypuff">
+             rel="http://api.addthis.com/oexchange/0.8/forward/google_plusone_share/offer?username=tpci&amp;url=https://www.pokemon.com/us/pokedex/pikachu">
             <span class="offscreen">google_plusone_share</span>
           </a>
 
           <a class="addthis_button_twitter exit-link" target="_blank"
-             rel="http://api.addthis.com/oexchange/0.8/forward/twitter/offer?username=tpci&amp;url=https://www.pokemon.com/us/pokedex/jigglypuff&amp;title=Jigglypuff | Pokédex | More at Pokemon.com">
+             rel="http://api.addthis.com/oexchange/0.8/forward/twitter/offer?username=tpci&amp;url=https://www.pokemon.com/us/pokedex/pikachu&amp;title=Pikachu | Pokédex | More at Pokemon.com">
             <span class="offscreen">twitter</span>
           </a>
 
           <a class="addthis_button_reddit exit-link" target="_blank"
-             rel="http://api.addthis.com/oexchange/0.8/forward/reddit/offer?username=tpci&amp;url=https://www.pokemon.com/us/pokedex/jigglypuff&amp;title=Jigglypuff | Pokédex | More at Pokemon.com">
+             rel="http://api.addthis.com/oexchange/0.8/forward/reddit/offer?username=tpci&amp;url=https://www.pokemon.com/us/pokedex/pikachu&amp;title=Pikachu | Pokédex | More at Pokemon.com">
             <span class="offscreen">reddit</span>
           </a>
 
           <a class="addthis_button_tumblr exit-link" target="_blank"
-             rel="http://api.addthis.com/oexchange/0.8/forward/tumblr/offer?username=tpci&amp;url=https://www.pokemon.com/us/pokedex/jigglypuff">
+             rel="http://api.addthis.com/oexchange/0.8/forward/tumblr/offer?username=tpci&amp;url=https://www.pokemon.com/us/pokedex/pikachu">
             <span class="offscreen">tumblr</span>
           </a>
         
@@ -2177,7 +2149,7 @@ right wavelength to make its foes most drowsy.
         
         <span class="icon icon_pokemontv"></span>
         
-        Jigglypuff Pok&eacute;mon TV Episodes
+        Pikachu Pok&eacute;mon TV Episodes
       </h3>
     </div>
   </div>
@@ -2190,7 +2162,7 @@ right wavelength to make its foes most drowsy.
       
 
 
-<li class="match" data-analytics-label="S6 | Episode 51 | A Poké-BLOCK Party! | /us/pokedex/jigglypuff"
+<li class="match" data-analytics-label="S10 | Episode 41 | A Stand-Up Sit-Down | /us/pokedex/pikachu"
     data-content-id="item-episodes"
     data-content-type="Slider"
     data-content-variation="slideCenter"
@@ -2202,7 +2174,7 @@ right wavelength to make its foes most drowsy.
     <div class="poster">
         
 
-        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season06/season06_ep51_ss01.jpg"
+        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season10/season10_ep41_ss01.jpg"
                 class="preload"
                 alt="None">
     </div>
@@ -2211,21 +2183,21 @@ right wavelength to make its foes most drowsy.
 
   <div class="text">
      
-    <h5 class="title">A Poké-BLOCK Party!</h5>
+    <h5 class="title">A Stand-Up Sit-Down</h5>
     
     
-      <div class="description">S6 | Episode 51</div>
+      <div class="description">S10 | Episode 41</div>
     
   </div>
 
   <span class="notch-bottom-center-small"></span>
 
   
-  <a href="/us/pokemon-episodes/06_51-a-poke-block-party/" class="block-link" title="S6 | Episode 51">
+  <a href="/us/pokemon-episodes/10_41-a-stand-up-sit-down/" class="block-link" title="S10 | Episode 41">
     <span class="offscreen">
-      A Poké-BLOCK Party!
+      A Stand-Up Sit-Down
       -
-      S6 | Episode 51
+      S10 | Episode 41
     </span>
   </a>
   
@@ -2235,7 +2207,7 @@ right wavelength to make its foes most drowsy.
       
 
 
-<li class="match" data-analytics-label="S2 | Episode 7 | Clefairy Tales | /us/pokedex/jigglypuff"
+<li class="match" data-analytics-label="S9 | Episode 13 | Queen of the Serpentine | /us/pokedex/pikachu"
     data-content-id="item-episodes"
     data-content-type="Slider"
     data-content-variation="slideCenter"
@@ -2247,7 +2219,7 @@ right wavelength to make its foes most drowsy.
     <div class="poster">
         
 
-        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season02/season02_ep07_ss01.jpg"
+        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season09/season09_ep13_ss01.jpg"
                 class="preload"
                 alt="None">
     </div>
@@ -2256,21 +2228,21 @@ right wavelength to make its foes most drowsy.
 
   <div class="text">
      
-    <h5 class="title">Clefairy Tales</h5>
+    <h5 class="title">Queen of the Serpentine</h5>
     
     
-      <div class="description">S2 | Episode 7</div>
+      <div class="description">S9 | Episode 13</div>
     
   </div>
 
   <span class="notch-bottom-center-small"></span>
 
   
-  <a href="/us/pokemon-episodes/02_07-clefairy-tales/" class="block-link" title="S2 | Episode 7">
+  <a href="/us/pokemon-episodes/09_13-queen-of-the-serpentine/" class="block-link" title="S9 | Episode 13">
     <span class="offscreen">
-      Clefairy Tales
+      Queen of the Serpentine
       -
-      S2 | Episode 7
+      S9 | Episode 13
     </span>
   </a>
   
@@ -2280,7 +2252,7 @@ right wavelength to make its foes most drowsy.
       
 
 
-<li class="match" data-analytics-label="S2 | Episode 15 | Lights, Camera, Quack-tion! | /us/pokedex/jigglypuff"
+<li class="match" data-analytics-label="S10 | Episode 39 | Steamboat Willies | /us/pokedex/pikachu"
     data-content-id="item-episodes"
     data-content-type="Slider"
     data-content-variation="slideCenter"
@@ -2292,7 +2264,7 @@ right wavelength to make its foes most drowsy.
     <div class="poster">
         
 
-        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season02/season02_ep15_ss01.jpg"
+        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season10/season10_ep39_ss01.jpg"
                 class="preload"
                 alt="None">
     </div>
@@ -2301,21 +2273,21 @@ right wavelength to make its foes most drowsy.
 
   <div class="text">
      
-    <h5 class="title">Lights, Camera, Quack-tion!</h5>
+    <h5 class="title">Steamboat Willies</h5>
     
     
-      <div class="description">S2 | Episode 15</div>
+      <div class="description">S10 | Episode 39</div>
     
   </div>
 
   <span class="notch-bottom-center-small"></span>
 
   
-  <a href="/us/pokemon-episodes/02_15-lights-camera-quack-tion/" class="block-link" title="S2 | Episode 15">
+  <a href="/us/pokemon-episodes/10_39-steamboat-willies/" class="block-link" title="S10 | Episode 39">
     <span class="offscreen">
-      Lights, Camera, Quack-tion!
+      Steamboat Willies
       -
-      S2 | Episode 15
+      S10 | Episode 39
     </span>
   </a>
   
@@ -2325,7 +2297,7 @@ right wavelength to make its foes most drowsy.
       
 
 
-<li class="match" data-analytics-label="S2 | Episode 34 | In the Pink | /us/pokedex/jigglypuff"
+<li class="match" data-analytics-label="S7 | Episode 3 | The Princess and the Togepi | /us/pokedex/pikachu"
     data-content-id="item-episodes"
     data-content-type="Slider"
     data-content-variation="slideCenter"
@@ -2337,7 +2309,7 @@ right wavelength to make its foes most drowsy.
     <div class="poster">
         
 
-        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season02/season02_ep34_ss01.jpg"
+        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season07/season07_ep03_ss01.jpg"
                 class="preload"
                 alt="None">
     </div>
@@ -2346,21 +2318,21 @@ right wavelength to make its foes most drowsy.
 
   <div class="text">
      
-    <h5 class="title">In the Pink</h5>
+    <h5 class="title">The Princess and the Togepi</h5>
     
     
-      <div class="description">S2 | Episode 34</div>
+      <div class="description">S7 | Episode 3</div>
     
   </div>
 
   <span class="notch-bottom-center-small"></span>
 
   
-  <a href="/us/pokemon-episodes/02_34-in-the-pink/" class="block-link" title="S2 | Episode 34">
+  <a href="/us/pokemon-episodes/07_03-the-princess-and-the-togepi/" class="block-link" title="S7 | Episode 3">
     <span class="offscreen">
-      In the Pink
+      The Princess and the Togepi
       -
-      S2 | Episode 34
+      S7 | Episode 3
     </span>
   </a>
   
@@ -2370,7 +2342,7 @@ right wavelength to make its foes most drowsy.
       
 
 
-<li class="match" data-analytics-label="S2 | Episode 37 | The Joy of Pokémon | /us/pokedex/jigglypuff"
+<li class="match" data-analytics-label="S16 | Episode 17 | Saving Braviary! | /us/pokedex/pikachu"
     data-content-id="item-episodes"
     data-content-type="Slider"
     data-content-variation="slideCenter"
@@ -2382,7 +2354,7 @@ right wavelength to make its foes most drowsy.
     <div class="poster">
         
 
-        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season02/season02_ep37_ss01.jpg"
+        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season16/season16_ep17_ss01.jpg"
                 class="preload"
                 alt="None">
     </div>
@@ -2391,21 +2363,21 @@ right wavelength to make its foes most drowsy.
 
   <div class="text">
      
-    <h5 class="title">The Joy of Pokémon</h5>
+    <h5 class="title">Saving Braviary!</h5>
     
     
-      <div class="description">S2 | Episode 37</div>
+      <div class="description">S16 | Episode 17</div>
     
   </div>
 
   <span class="notch-bottom-center-small"></span>
 
   
-  <a href="/us/pokemon-episodes/02_37-the-joy-of-pokemon/" class="block-link" title="S2 | Episode 37">
+  <a href="/us/pokemon-episodes/16_17-saving-braviary/" class="block-link" title="S16 | Episode 17">
     <span class="offscreen">
-      The Joy of Pokémon
+      Saving Braviary!
       -
-      S2 | Episode 37
+      S16 | Episode 17
     </span>
   </a>
   
@@ -2415,7 +2387,7 @@ right wavelength to make its foes most drowsy.
       
 
 
-<li class="match" data-analytics-label="S2 | Episode 43 | A Way Off Day Off | /us/pokedex/jigglypuff"
+<li class="match" data-analytics-label="S1 | Episode 21 | Abra and the Psychic Showdown | /us/pokedex/pikachu"
     data-content-id="item-episodes"
     data-content-type="Slider"
     data-content-variation="slideCenter"
@@ -2427,7 +2399,7 @@ right wavelength to make its foes most drowsy.
     <div class="poster">
         
 
-        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season02/season02_ep43_ss01.jpg"
+        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season01/season01_ep21_ss01.jpg"
                 class="preload"
                 alt="None">
     </div>
@@ -2436,21 +2408,21 @@ right wavelength to make its foes most drowsy.
 
   <div class="text">
      
-    <h5 class="title">A Way Off Day Off</h5>
+    <h5 class="title">Abra and the Psychic Showdown</h5>
     
     
-      <div class="description">S2 | Episode 43</div>
+      <div class="description">S1 | Episode 21</div>
     
   </div>
 
   <span class="notch-bottom-center-small"></span>
 
   
-  <a href="/us/pokemon-episodes/02_43-a-way-off-day-off/" class="block-link" title="S2 | Episode 43">
+  <a href="/us/pokemon-episodes/01_21-abra-and-the-psychic-showdown/" class="block-link" title="S1 | Episode 21">
     <span class="offscreen">
-      A Way Off Day Off
+      Abra and the Psychic Showdown
       -
-      S2 | Episode 43
+      S1 | Episode 21
     </span>
   </a>
   
@@ -2460,7 +2432,7 @@ right wavelength to make its foes most drowsy.
       
 
 
-<li class="match" data-analytics-label="S8 | Episode 50 | The Saffron Con | /us/pokedex/jigglypuff"
+<li class="match" data-analytics-label="S6 | Episode 20 | A Tail with a Twist | /us/pokedex/pikachu"
     data-content-id="item-episodes"
     data-content-type="Slider"
     data-content-variation="slideCenter"
@@ -2472,7 +2444,7 @@ right wavelength to make its foes most drowsy.
     <div class="poster">
         
 
-        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season08/season08_ep01_ss01.jpg"
+        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season06/season06_ep20_ss01.jpg"
                 class="preload"
                 alt="None">
     </div>
@@ -2481,21 +2453,21 @@ right wavelength to make its foes most drowsy.
 
   <div class="text">
      
-    <h5 class="title">The Saffron Con</h5>
+    <h5 class="title">A Tail with a Twist</h5>
     
     
-      <div class="description">S8 | Episode 50</div>
+      <div class="description">S6 | Episode 20</div>
     
   </div>
 
   <span class="notch-bottom-center-small"></span>
 
   
-  <a href="/us/pokemon-episodes/08_50-the-saffron-con/" class="block-link" title="S8 | Episode 50">
+  <a href="/us/pokemon-episodes/06_20-a-tail-with-a-twist/" class="block-link" title="S6 | Episode 20">
     <span class="offscreen">
-      The Saffron Con
+      A Tail with a Twist
       -
-      S8 | Episode 50
+      S6 | Episode 20
     </span>
   </a>
   
@@ -2505,7 +2477,7 @@ right wavelength to make its foes most drowsy.
       
 
 
-<li class="match" data-analytics-label="S8 | Episode 45 | Rough, Tough Jigglypuff | /us/pokedex/jigglypuff"
+<li class="match" data-analytics-label="S15 | Episode 24 | A Clubsplosion of Excitement! | /us/pokedex/pikachu"
     data-content-id="item-episodes"
     data-content-type="Slider"
     data-content-variation="slideCenter"
@@ -2517,7 +2489,7 @@ right wavelength to make its foes most drowsy.
     <div class="poster">
         
 
-        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season08/season08_ep45_ss01.jpg"
+        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season15/season15_ep24_ss01.jpg"
                 class="preload"
                 alt="None">
     </div>
@@ -2526,21 +2498,21 @@ right wavelength to make its foes most drowsy.
 
   <div class="text">
      
-    <h5 class="title">Rough, Tough Jigglypuff</h5>
+    <h5 class="title">A Clubsplosion of Excitement!</h5>
     
     
-      <div class="description">S8 | Episode 45</div>
+      <div class="description">S15 | Episode 24</div>
     
   </div>
 
   <span class="notch-bottom-center-small"></span>
 
   
-  <a href="/us/pokemon-episodes/08_45-rough-tough-jigglypuff/" class="block-link" title="S8 | Episode 45">
+  <a href="/us/pokemon-episodes/15_24-a-clubsplosion-of-excitement/" class="block-link" title="S15 | Episode 24">
     <span class="offscreen">
-      Rough, Tough Jigglypuff
+      A Clubsplosion of Excitement!
       -
-      S8 | Episode 45
+      S15 | Episode 24
     </span>
   </a>
   
@@ -2569,80 +2541,80 @@ right wavelength to make its foes most drowsy.
 
   
 <div>
-    <a href="/us/pokemon-episodes/06_51-a-poke-block-party/">
-        <h5>A Poké-BLOCK Party!</h5>
-        <span class="subtitle">S6 | Episode 51</span>
-        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season06/season06_ep51_ss01.jpg" alt="None" />
+    <a href="/us/pokemon-episodes/10_41-a-stand-up-sit-down/">
+        <h5>A Stand-Up Sit-Down</h5>
+        <span class="subtitle">S10 | Episode 41</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season10/season10_ep41_ss01.jpg" alt="None" />
     </a>
 </div>
 
 
   
 <div>
-    <a href="/us/pokemon-episodes/02_07-clefairy-tales/">
-        <h5>Clefairy Tales</h5>
-        <span class="subtitle">S2 | Episode 7</span>
-        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season02/season02_ep07_ss01.jpg" alt="None" />
+    <a href="/us/pokemon-episodes/09_13-queen-of-the-serpentine/">
+        <h5>Queen of the Serpentine</h5>
+        <span class="subtitle">S9 | Episode 13</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season09/season09_ep13_ss01.jpg" alt="None" />
     </a>
 </div>
 
 
   
 <div>
-    <a href="/us/pokemon-episodes/02_15-lights-camera-quack-tion/">
-        <h5>Lights, Camera, Quack-tion!</h5>
-        <span class="subtitle">S2 | Episode 15</span>
-        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season02/season02_ep15_ss01.jpg" alt="None" />
+    <a href="/us/pokemon-episodes/10_39-steamboat-willies/">
+        <h5>Steamboat Willies</h5>
+        <span class="subtitle">S10 | Episode 39</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season10/season10_ep39_ss01.jpg" alt="None" />
     </a>
 </div>
 
 
   
 <div>
-    <a href="/us/pokemon-episodes/02_34-in-the-pink/">
-        <h5>In the Pink</h5>
-        <span class="subtitle">S2 | Episode 34</span>
-        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season02/season02_ep34_ss01.jpg" alt="None" />
+    <a href="/us/pokemon-episodes/07_03-the-princess-and-the-togepi/">
+        <h5>The Princess and the Togepi</h5>
+        <span class="subtitle">S7 | Episode 3</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season07/season07_ep03_ss01.jpg" alt="None" />
     </a>
 </div>
 
 
   
 <div>
-    <a href="/us/pokemon-episodes/02_37-the-joy-of-pokemon/">
-        <h5>The Joy of Pokémon</h5>
-        <span class="subtitle">S2 | Episode 37</span>
-        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season02/season02_ep37_ss01.jpg" alt="None" />
+    <a href="/us/pokemon-episodes/16_17-saving-braviary/">
+        <h5>Saving Braviary!</h5>
+        <span class="subtitle">S16 | Episode 17</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season16/season16_ep17_ss01.jpg" alt="None" />
     </a>
 </div>
 
 
   
 <div>
-    <a href="/us/pokemon-episodes/02_43-a-way-off-day-off/">
-        <h5>A Way Off Day Off</h5>
-        <span class="subtitle">S2 | Episode 43</span>
-        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season02/season02_ep43_ss01.jpg" alt="None" />
+    <a href="/us/pokemon-episodes/01_21-abra-and-the-psychic-showdown/">
+        <h5>Abra and the Psychic Showdown</h5>
+        <span class="subtitle">S1 | Episode 21</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season01/season01_ep21_ss01.jpg" alt="None" />
     </a>
 </div>
 
 
   
 <div>
-    <a href="/us/pokemon-episodes/08_50-the-saffron-con/">
-        <h5>The Saffron Con</h5>
-        <span class="subtitle">S8 | Episode 50</span>
-        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season08/season08_ep01_ss01.jpg" alt="None" />
+    <a href="/us/pokemon-episodes/06_20-a-tail-with-a-twist/">
+        <h5>A Tail with a Twist</h5>
+        <span class="subtitle">S6 | Episode 20</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season06/season06_ep20_ss01.jpg" alt="None" />
     </a>
 </div>
 
 
   
 <div>
-    <a href="/us/pokemon-episodes/08_45-rough-tough-jigglypuff/">
-        <h5>Rough, Tough Jigglypuff</h5>
-        <span class="subtitle">S8 | Episode 45</span>
-        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season08/season08_ep45_ss01.jpg" alt="None" />
+    <a href="/us/pokemon-episodes/15_24-a-clubsplosion-of-excitement/">
+        <h5>A Clubsplosion of Excitement!</h5>
+        <span class="subtitle">S15 | Episode 24</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season15/season15_ep24_ss01.jpg" alt="None" />
     </a>
 </div>
 
@@ -2677,7 +2649,7 @@ right wavelength to make its foes most drowsy.
         
         <span class="icon icon_cards"></span>
         
-        Jigglypuff Cards
+        Pikachu Cards
       </h3>
     </div>
   </div>
@@ -2690,7 +2662,7 @@ right wavelength to make its foes most drowsy.
       
 
 
-<li data-analytics-label="Jigglypuff | EX Team Magma vs. Team Aqua | /us/pokedex/jigglypuff"
+<li data-analytics-label="Pikachu | EX Sandstorm | /us/pokedex/pikachu"
     data-content-id="item-cards"
     data-content-type="Slider"
     data-content-variation="slideCenter"
@@ -2698,259 +2670,19 @@ right wavelength to make its foes most drowsy.
     data-content-category="Card"
     data-content-download=""
     >
-  <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex4/41/">
+  <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex2/72/">
   <div class="card-img">
-    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX4/EX4_EN_41.png"
-         alt="Jigglypuff" 
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX2/EX2_EN_72.png"
+         alt="Pikachu" 
          class="preload">
   </div>
   <div class="card-name">
-    <h5>Jigglypuff</h5>
-    <span class="card-number">41</span>
-
-    <br style="clear:both;">
-    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/ex-04symbol.png">
-    <span class="expansion-name">EX Team Magma vs. Team Aqua</span>
-    <span class="notch-bottom-center-small"></span>
-  </div>
-  </a>
-</li>
-
-    
-      
-
-
-<li data-analytics-label="Jigglypuff | XY | /us/pokedex/jigglypuff"
-    data-content-id="item-cards"
-    data-content-type="Slider"
-    data-content-variation="slideCenter"
-    data-content-location=""
-    data-content-category="Card"
-    data-content-download=""
-    >
-  <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xy1/87/">
-  <div class="card-img">
-    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY1/XY1_EN_87.png"
-         alt="Jigglypuff" 
-         class="preload">
-  </div>
-  <div class="card-name">
-    <h5>Jigglypuff</h5>
-    <span class="card-number">87</span>
-
-    <br style="clear:both;">
-    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/xy1-expansion-symbol.png">
-    <span class="expansion-name">XY</span>
-    <span class="notch-bottom-center-small"></span>
-  </div>
-  </a>
-</li>
-
-    
-      
-
-
-<li data-analytics-label="Jigglypuff | EX Hidden Legends | /us/pokedex/jigglypuff"
-    data-content-id="item-cards"
-    data-content-type="Slider"
-    data-content-variation="slideCenter"
-    data-content-location=""
-    data-content-category="Card"
-    data-content-download=""
-    >
-  <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex5/63/">
-  <div class="card-img">
-    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX5/EX5_EN_63.png"
-         alt="Jigglypuff" 
-         class="preload">
-  </div>
-  <div class="card-name">
-    <h5>Jigglypuff</h5>
-    <span class="card-number">63</span>
-
-    <br style="clear:both;">
-    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/ex-05symbol.png">
-    <span class="expansion-name">EX Hidden Legends</span>
-    <span class="notch-bottom-center-small"></span>
-  </div>
-  </a>
-</li>
-
-    
-      
-
-
-<li data-analytics-label="Jigglypuff | XY | /us/pokedex/jigglypuff"
-    data-content-id="item-cards"
-    data-content-type="Slider"
-    data-content-variation="slideCenter"
-    data-content-location=""
-    data-content-category="Card"
-    data-content-download=""
-    >
-  <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xy1/88/">
-  <div class="card-img">
-    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY1/XY1_EN_88.png"
-         alt="Jigglypuff" 
-         class="preload">
-  </div>
-  <div class="card-name">
-    <h5>Jigglypuff</h5>
-    <span class="card-number">88</span>
-
-    <br style="clear:both;">
-    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/xy1-expansion-symbol.png">
-    <span class="expansion-name">XY</span>
-    <span class="notch-bottom-center-small"></span>
-  </div>
-  </a>
-</li>
-
-    
-      
-
-
-<li data-analytics-label="Jigglypuff | EX Fire Red &amp; Leaf Green | /us/pokedex/jigglypuff"
-    data-content-id="item-cards"
-    data-content-type="Slider"
-    data-content-variation="slideCenter"
-    data-content-location=""
-    data-content-category="Card"
-    data-content-download=""
-    >
-  <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex6/65/">
-  <div class="card-img">
-    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX6/EX6_EN_65.png"
-         alt="Jigglypuff" 
-         class="preload">
-  </div>
-  <div class="card-name">
-    <h5>Jigglypuff</h5>
-    <span class="card-number">65</span>
-
-    <br style="clear:both;">
-    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/ex-06symbol.png">
-    <span class="expansion-name">EX Fire Red &amp; Leaf Green</span>
-    <span class="notch-bottom-center-small"></span>
-  </div>
-  </a>
-</li>
-
-    
-      
-
-
-<li data-analytics-label="Jigglypuff | BW—Promo | /us/pokedex/jigglypuff"
-    data-content-id="item-cards"
-    data-content-type="Slider"
-    data-content-variation="slideCenter"
-    data-content-location=""
-    data-content-category="Card"
-    data-content-download=""
-    >
-  <a href="/us/pokemon-tcg/pokemon-cards/bw-series/bwp/BW65/">
-  <div class="card-img">
-    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW65.png"
-         alt="Jigglypuff" 
-         class="preload">
-  </div>
-  <div class="card-name">
-    <h5>Jigglypuff</h5>
-    <span class="card-number">BW65</span>
-
-    <br style="clear:both;">
-    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/black-star-promo.png">
-    <span class="expansion-name">BW—Promo</span>
-    <span class="notch-bottom-center-small"></span>
-  </div>
-  </a>
-</li>
-
-    
-      
-
-
-<li data-analytics-label="Jigglypuff | EX Crystal Guardians | /us/pokedex/jigglypuff"
-    data-content-id="item-cards"
-    data-content-type="Slider"
-    data-content-variation="slideCenter"
-    data-content-location=""
-    data-content-category="Card"
-    data-content-download=""
-    >
-  <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex14/53/">
-  <div class="card-img">
-    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX14/EX14_EN_53.png"
-         alt="Jigglypuff" 
-         class="preload">
-  </div>
-  <div class="card-name">
-    <h5>Jigglypuff</h5>
-    <span class="card-number">53</span>
-
-    <br style="clear:both;">
-    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/ex-14symbol.png">
-    <span class="expansion-name">EX Crystal Guardians</span>
-    <span class="notch-bottom-center-small"></span>
-  </div>
-  </a>
-</li>
-
-    
-      
-
-
-<li data-analytics-label="Jigglypuff | XY—Fates Collide | /us/pokedex/jigglypuff"
-    data-content-id="item-cards"
-    data-content-type="Slider"
-    data-content-variation="slideCenter"
-    data-content-location=""
-    data-content-category="Card"
-    data-content-download=""
-    >
-  <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xy10/65/">
-  <div class="card-img">
-    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY10/XY10_EN_65.png"
-         alt="Jigglypuff" 
-         class="preload">
-  </div>
-  <div class="card-name">
-    <h5>Jigglypuff</h5>
-    <span class="card-number">65</span>
-
-    <br style="clear:both;">
-    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/xy10-expansion-symbol.png">
-    <span class="expansion-name">XY—Fates Collide</span>
-    <span class="notch-bottom-center-small"></span>
-  </div>
-  </a>
-</li>
-
-    
-      
-
-
-<li data-analytics-label="Jigglypuff | Diamond &amp; Pearl—Great Encounters | /us/pokedex/jigglypuff"
-    data-content-id="item-cards"
-    data-content-type="Slider"
-    data-content-variation="slideCenter"
-    data-content-location=""
-    data-content-category="Card"
-    data-content-download=""
-    >
-  <a href="/us/pokemon-tcg/pokemon-cards/diamond-pearl-series/dp4/72/">
-  <div class="card-img">
-    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/DP4/DP4_EN_72.png"
-         alt="Jigglypuff" 
-         class="preload">
-  </div>
-  <div class="card-name">
-    <h5>Jigglypuff</h5>
+    <h5>Pikachu</h5>
     <span class="card-number">72</span>
 
     <br style="clear:both;">
-    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/dp4-expansion-symbol.png">
-    <span class="expansion-name">Diamond &amp; Pearl—Great Encounters</span>
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/ex-02symbol.png">
+    <span class="expansion-name">EX Sandstorm</span>
     <span class="notch-bottom-center-small"></span>
   </div>
   </a>
@@ -2960,7 +2692,7 @@ right wavelength to make its foes most drowsy.
       
 
 
-<li data-analytics-label="Jigglypuff | Crimson Invasion | /us/pokedex/jigglypuff"
+<li data-analytics-label="Pikachu-EX | XY—Promo | /us/pokedex/pikachu"
     data-content-id="item-cards"
     data-content-type="Slider"
     data-content-variation="slideCenter"
@@ -2968,15 +2700,135 @@ right wavelength to make its foes most drowsy.
     data-content-category="Card"
     data-content-download=""
     >
-  <a href="/us/pokemon-tcg/pokemon-cards/sm-series/sm4/71/">
+  <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xyp/XY124/">
   <div class="card-img">
-    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/SM4/SM4_EN_71.png"
-         alt="Jigglypuff" 
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/XYP/XYP_EN_XY124.png"
+         alt="Pikachu-EX" 
          class="preload">
   </div>
   <div class="card-name">
-    <h5>Jigglypuff</h5>
-    <span class="card-number">71</span>
+    <h5>Pikachu-EX</h5>
+    <span class="card-number">XY124</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/black-star-promo.png">
+    <span class="expansion-name">XY—Promo</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Flying Pikachu | Platinum—Rising Rivals | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/platinum-series/pl2/113/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/PL2/PL2_EN_113.png"
+         alt="Flying Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Flying Pikachu</h5>
+    <span class="card-number">113</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/pl2-expansion-symbol.png">
+    <span class="expansion-name">Platinum—Rising Rivals</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Ash&#39;s Pikachu | Sun &amp; Moon Promo | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/sm-series/smp/SM108/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM108.png"
+         alt="Ash&#39;s Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Ash&#39;s Pikachu</h5>
+    <span class="card-number">SM108</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/smp-expansion-symbol.png">
+    <span class="expansion-name">Sun &amp; Moon Promo</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | Black &amp; White—Next Destinies | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/bw-series/bw4/39/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/BW4/BW4_EN_39.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">39</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/bw4-expansion-symbol.png">
+    <span class="expansion-name">Black &amp; White—Next Destinies</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | Crimson Invasion | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/sm-series/sm4/30/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/SM4/SM4_EN_30.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">30</span>
 
     <br style="clear:both;">
     <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/sm4-expansion-symbol.png">
@@ -2990,7 +2842,7 @@ right wavelength to make its foes most drowsy.
       
 
 
-<li data-analytics-label="Jigglypuff | HeartGold &amp; SoulSilver | /us/pokedex/jigglypuff"
+<li data-analytics-label="Pikachu | XY–BREAKthrough | /us/pokedex/pikachu"
     data-content-id="item-cards"
     data-content-type="Slider"
     data-content-variation="slideCenter"
@@ -2998,15 +2850,885 @@ right wavelength to make its foes most drowsy.
     data-content-category="Card"
     data-content-download=""
     >
-  <a href="/us/pokemon-tcg/pokemon-cards/hgss-series/hgss1/68/">
+  <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xy8/48/">
   <div class="card-img">
-    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/HGSS1/HGSS1_EN_68.png"
-         alt="Jigglypuff" 
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY8/XY8_EN_48.png"
+         alt="Pikachu" 
          class="preload">
   </div>
   <div class="card-name">
-    <h5>Jigglypuff</h5>
-    <span class="card-number">68</span>
+    <h5>Pikachu</h5>
+    <span class="card-number">48</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/xy8-expansion-symbol.png">
+    <span class="expansion-name">XY–BREAKthrough</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu δ | EX Holon Phantoms | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex13/79/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX13/EX13_EN_79.png"
+         alt="Pikachu δ" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu δ</h5>
+    <span class="card-number">79</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/ex-13symbol.png">
+    <span class="expansion-name">EX Holon Phantoms</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu δ | POP Series 5 | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/pop-series/pop5/13/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/POP5/POP_5_Card_13.png"
+         alt="Pikachu δ" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu δ</h5>
+    <span class="card-number">13</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/pop-5-exp-logo.png">
+    <span class="expansion-name">POP Series 5</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | Sun &amp; Moon Promo | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/sm-series/smp/SM76/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM76.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">SM76</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/smp-expansion-symbol.png">
+    <span class="expansion-name">Sun &amp; Moon Promo</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | EX Team Magma vs. Team Aqua | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex4/43/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX4/EX4_EN_43.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">43</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/ex-04symbol.png">
+    <span class="expansion-name">EX Team Magma vs. Team Aqua</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu-EX | XY—Promo | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xyp/XY174/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/XYP/XYP_EN_XY174.png"
+         alt="Pikachu-EX" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu-EX</h5>
+    <span class="card-number">XY174</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/black-star-promo.png">
+    <span class="expansion-name">XY—Promo</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Surfing Pikachu | Platinum—Rising Rivals | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/platinum-series/pl2/114/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/PL2/PL2_EN_114.png"
+         alt="Surfing Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Surfing Pikachu</h5>
+    <span class="card-number">114</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/pl2-expansion-symbol.png">
+    <span class="expansion-name">Platinum—Rising Rivals</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Ash&#39;s Pikachu | Sun &amp; Moon Promo | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/sm-series/smp/SM109/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM109.png"
+         alt="Ash&#39;s Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Ash&#39;s Pikachu</h5>
+    <span class="card-number">SM109</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/smp-expansion-symbol.png">
+    <span class="expansion-name">Sun &amp; Moon Promo</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | Black &amp; White—Boundaries Crossed | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/bw-series/bw7/50/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/BW7/BW7_EN_50.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">50</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/bw7-expansion-symbol.png">
+    <span class="expansion-name">Black &amp; White—Boundaries Crossed</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | EX Power Keepers | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex16/57/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX16/EX16_EN_57.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">57</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/ex-16symbol.png">
+    <span class="expansion-name">EX Power Keepers</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | Generations | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/xy-series/g1/26/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/G1/G1_EN_26.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">26</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/g1-expansion-symbol.png">
+    <span class="expansion-name">Generations</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | Sun &amp; Moon Promo | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/sm-series/smp/SM81/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM81.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">SM81</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/smp-expansion-symbol.png">
+    <span class="expansion-name">Sun &amp; Moon Promo</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | POP Series 6 | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/pop-series/pop6/9/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/POP6/POP_6_9.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">9</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/pop-6-exp-logo.png">
+    <span class="expansion-name">POP Series 6</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | EX Fire Red &amp; Leaf Green | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex6/74/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX6/EX6_EN_74.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">74</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/ex-06symbol.png">
+    <span class="expansion-name">EX Fire Red &amp; Leaf Green</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu-EX | XY—Promo | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xyp/XY84/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/XYP/XYP_EN_XY84.png"
+         alt="Pikachu-EX" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu-EX</h5>
+    <span class="card-number">XY84</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/black-star-promo.png">
+    <span class="expansion-name">XY—Promo</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | Platinum—Supreme Victors | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/platinum-series/pl3/120/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/PL3/PL3_EN_120.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">120</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/pl3-exp-symbol.png">
+    <span class="expansion-name">Platinum—Supreme Victors</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Ash&#39;s Pikachu | Sun &amp; Moon Promo | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/sm-series/smp/SM110/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM110.png"
+         alt="Ash&#39;s Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Ash&#39;s Pikachu</h5>
+    <span class="card-number">SM110</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/smp-expansion-symbol.png">
+    <span class="expansion-name">Sun &amp; Moon Promo</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | Black &amp; White—Legendary Treasures | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/bw-series/bw11/RC7/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/BW11/BW11_EN_RC7.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">RC7</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/bw11-expansion-symbol.png">
+    <span class="expansion-name">Black &amp; White—Legendary Treasures</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | Diamond &amp; Pearl—Mysterious Treasures | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/diamond-pearl-series/dp2/94/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/DP2/DP2_EN_94.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">94</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/dp2-exp-symbol.png">
+    <span class="expansion-name">Diamond &amp; Pearl—Mysterious Treasures</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | Generations | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/xy-series/g1/RC29/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/G1/G1_EN_RC29.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">RC29</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/g1-expansion-symbol.png">
+    <span class="expansion-name">Generations</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | Sun &amp; Moon Promo | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/sm-series/smp/SM86/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM86.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">SM86</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/smp-expansion-symbol.png">
+    <span class="expansion-name">Sun &amp; Moon Promo</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | POP Series 9 | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/pop-series/pop9/15/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/POP9/POP_9_Cards_15.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">15</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/pop-9-exp-logo.png">
+    <span class="expansion-name">POP Series 9</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | EX Emerald | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex9/60/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX9/EX9_EN_60.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">60</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/ex-09symbol.png">
+    <span class="expansion-name">EX Emerald</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | XY—Promo | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xyp/XY89/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/XYP/XYP_EN_XY89.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">XY89</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/black-star-promo.png">
+    <span class="expansion-name">XY—Promo</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | Platinum Arceus | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/platinum-series/pl4/71/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/PL4/PL4_EN_71.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">71</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/pl4-expansion-symbol.png">
+    <span class="expansion-name">Platinum Arceus</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Ash&#39;s Pikachu | Sun &amp; Moon Promo | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/sm-series/smp/SM111/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM111.png"
+         alt="Ash&#39;s Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Ash&#39;s Pikachu</h5>
+    <span class="card-number">SM111</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/smp-expansion-symbol.png">
+    <span class="expansion-name">Sun &amp; Moon Promo</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | XY | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xy1/42/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY1/XY1_EN_42.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">42</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/xy1-expansion-symbol.png">
+    <span class="expansion-name">XY</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | Diamond &amp; Pearl—Majestic Dawn | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/diamond-pearl-series/dp5/70/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/DP5/DP5_EN_70.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">70</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/dp5-exp-symbol.png">
+    <span class="expansion-name">Diamond &amp; Pearl—Majestic Dawn</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Flying Pikachu | XY—Evolutions | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xy12/110/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY12/XY12_EN_110.png"
+         alt="Flying Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Flying Pikachu</h5>
+    <span class="card-number">110</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/xy12-expansion-symbol.png">
+    <span class="expansion-name">XY—Evolutions</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | HeartGold &amp; SoulSilver | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/hgss-series/hgss1/78/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/HGSS1/HGSS1_EN_78.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">78</span>
 
     <br style="clear:both;">
     <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/hgss1-expansion-symbol.png">
@@ -3020,7 +3742,7 @@ right wavelength to make its foes most drowsy.
       
 
 
-<li data-analytics-label="Jigglypuff | Lost Thunder | /us/pokedex/jigglypuff"
+<li data-analytics-label="Pikachu | Sun &amp; Moon Promo | /us/pokedex/pikachu"
     data-content-id="item-cards"
     data-content-type="Slider"
     data-content-variation="slideCenter"
@@ -3028,19 +3750,19 @@ right wavelength to make its foes most drowsy.
     data-content-category="Card"
     data-content-download=""
     >
-  <a href="/us/pokemon-tcg/pokemon-cards/sm-series/sm8/133/">
+  <a href="/us/pokemon-tcg/pokemon-cards/sm-series/smp/SM98/">
   <div class="card-img">
-    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/SM8/SM8_EN_133.png"
-         alt="Jigglypuff" 
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM98.png"
+         alt="Pikachu" 
          class="preload">
   </div>
   <div class="card-name">
-    <h5>Jigglypuff</h5>
-    <span class="card-number">133</span>
+    <h5>Pikachu</h5>
+    <span class="card-number">SM98</span>
 
     <br style="clear:both;">
-    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/sm8-expansion-symbol.png">
-    <span class="expansion-name">Lost Thunder</span>
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/smp-expansion-symbol.png">
+    <span class="expansion-name">Sun &amp; Moon Promo</span>
     <span class="notch-bottom-center-small"></span>
   </div>
   </a>
@@ -3050,7 +3772,7 @@ right wavelength to make its foes most drowsy.
       
 
 
-<li data-analytics-label="Jigglypuff | Black &amp; White—Next Destinies | /us/pokedex/jigglypuff"
+<li data-analytics-label="Pikachu δ | EX Legend Maker | /us/pokedex/pikachu"
     data-content-id="item-cards"
     data-content-type="Slider"
     data-content-variation="slideCenter"
@@ -3058,19 +3780,649 @@ right wavelength to make its foes most drowsy.
     data-content-category="Card"
     data-content-download=""
     >
-  <a href="/us/pokemon-tcg/pokemon-cards/bw-series/bw4/78/">
+  <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex12/93/">
   <div class="card-img">
-    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/BW4/BW4_EN_78.png"
-         alt="Jigglypuff" 
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX12/EX12_EN_93.png"
+         alt="Pikachu δ" 
          class="preload">
   </div>
   <div class="card-name">
-    <h5>Jigglypuff</h5>
+    <h5>Pikachu δ</h5>
+    <span class="card-number">93</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/ex-12symbol.png">
+    <span class="expansion-name">EX Legend Maker</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | XY—Promo | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xyp/XY95/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/XYP/XYP_EN_XY95.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">XY95</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/black-star-promo.png">
+    <span class="expansion-name">XY—Promo</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | POP Series 2 | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/pop-series/pop2/16/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/POP2/POP%20Series%202_EN_16.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">16</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/pop-2-exp-logo.png">
+    <span class="expansion-name">POP Series 2</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Ash&#39;s Pikachu | Sun &amp; Moon Promo | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/sm-series/smp/SM112/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM112.png"
+         alt="Ash&#39;s Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Ash&#39;s Pikachu</h5>
+    <span class="card-number">SM112</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/smp-expansion-symbol.png">
+    <span class="expansion-name">Sun &amp; Moon Promo</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | HS—Promo | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/hgss-series/hsp/HGSS03/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/HSP/HSP_EN_HGSS03.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">HGSS03</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/black-star-promo.png">
+    <span class="expansion-name">HS—Promo</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | Diamond &amp; Pearl—Stormfront | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/diamond-pearl-series/dp7/70/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/DP7/DP7_EN_70.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">70</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/dp7-exp-symbol.png">
+    <span class="expansion-name">Diamond &amp; Pearl—Stormfront</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Surfing Pikachu | XY—Evolutions | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xy12/111/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY12/XY12_EN_111.png"
+         alt="Surfing Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Surfing Pikachu</h5>
+    <span class="card-number">111</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/xy12-expansion-symbol.png">
+    <span class="expansion-name">XY—Evolutions</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | HS—Undaunted | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/hgss-series/hgss3/61/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/HGSS3/HGSS3_EN_61.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">61</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/hgss3-expansion-symbol.png">
+    <span class="expansion-name">HS—Undaunted</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | Burning Shadows | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/sm-series/sm3/40/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/SM3/SM3_EN_40.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">40</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/sm3-expansion-symbol.png">
+    <span class="expansion-name">Burning Shadows</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu ★ | EX Holon Phantoms | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex13/104/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX13/EX13_EN_104.png"
+         alt="Pikachu ★" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu ★</h5>
+    <span class="card-number">104</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/ex-13symbol.png">
+    <span class="expansion-name">EX Holon Phantoms</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | XY—Furious Fists | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xy3/27/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY3/XY3_EN_27.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">27</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/xy3-expansion-symbol.png">
+    <span class="expansion-name">XY—Furious Fists</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | POP Series 4 | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/pop-series/pop4/13/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/POP4/POP%20Series%204_Cards_EN_13.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">13</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/pop-4-exp-logo.png">
+    <span class="expansion-name">POP Series 4</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Ash&#39;s Pikachu | Sun &amp; Moon Promo | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/sm-series/smp/SM113/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM113.png"
+         alt="Ash&#39;s Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Ash&#39;s Pikachu</h5>
+    <span class="card-number">SM113</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/smp-expansion-symbol.png">
+    <span class="expansion-name">Sun &amp; Moon Promo</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | BW—Promo | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/bw-series/bwp/BW54/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">BW54</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/black-star-promo.png">
+    <span class="expansion-name">BW—Promo</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | Platinum—Rising Rivals | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/platinum-series/pl2/112/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/PL2/PL2_EN_112.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">112</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/pl2-expansion-symbol.png">
+    <span class="expansion-name">Platinum—Rising Rivals</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | XY—Evolutions | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xy12/35/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY12/XY12_EN_35.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">35</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/xy12-expansion-symbol.png">
+    <span class="expansion-name">XY—Evolutions</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | Black &amp; White | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/bw-series/bw1/PIKA/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/BW1/BW1_EN_PIKA.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">PIKA</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/bw1-expansion-symbol.png">
+    <span class="expansion-name">Black &amp; White</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | Shining Legends | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/sm-series/sm35/28/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/SM35/SM35_EN_28.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">28</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/sm35-expansion-symbol.png">
+    <span class="expansion-name">Shining Legends</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | XY—Roaring Skies | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xy6/20/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY6/XY6_EN_20.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">20</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/xy6-expansion-symbol.png">
+    <span class="expansion-name">XY—Roaring Skies</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | EX Holon Phantoms | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex13/78/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX13/EX13_EN_78.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
     <span class="card-number">78</span>
 
     <br style="clear:both;">
-    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/bw4-expansion-symbol.png">
-    <span class="expansion-name">Black &amp; White—Next Destinies</span>
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/ex-13symbol.png">
+    <span class="expansion-name">EX Holon Phantoms</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Pikachu | POP Series 5 | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/pop-series/pop5/12/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/POP5/POP_5_Card_12.png"
+         alt="Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Pikachu</h5>
+    <span class="card-number">12</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/pop-5-exp-logo.png">
+    <span class="expansion-name">POP Series 5</span>
+    <span class="notch-bottom-center-small"></span>
+  </div>
+  </a>
+</li>
+
+    
+      
+
+
+<li data-analytics-label="Ash&#39;s Pikachu | Sun &amp; Moon Promo | /us/pokedex/pikachu"
+    data-content-id="item-cards"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Card"
+    data-content-download=""
+    >
+  <a href="/us/pokemon-tcg/pokemon-cards/sm-series/smp/SM114/">
+  <div class="card-img">
+    <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM114.png"
+         alt="Ash&#39;s Pikachu" 
+         class="preload">
+  </div>
+  <div class="card-name">
+    <h5>Ash&#39;s Pikachu</h5>
+    <span class="card-number">SM114</span>
+
+    <br style="clear:both;">
+    <img class="card-expansion-symbol" width="25" height="25" src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_25x25/smp-expansion-symbol.png">
+    <span class="expansion-name">Sun &amp; Moon Promo</span>
     <span class="notch-bottom-center-small"></span>
   </div>
   </a>
@@ -3101,10 +4453,10 @@ right wavelength to make its foes most drowsy.
 
 
 <div>
-    <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex4/41/">
-        <h5>Jigglypuff</h5>
-        <span class="subtitle">EX Team Magma vs. Team Aqua</span>
-        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX4/EX4_EN_41.png" alt="Jigglypuff" />
+    <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex2/72/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">EX Sandstorm</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX2/EX2_EN_72.png" alt="Pikachu" />
     </a>
 </div>
 
@@ -3114,10 +4466,10 @@ right wavelength to make its foes most drowsy.
 
 
 <div>
-    <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xy1/87/">
-        <h5>Jigglypuff</h5>
-        <span class="subtitle">XY</span>
-        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY1/XY1_EN_87.png" alt="Jigglypuff" />
+    <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xyp/XY124/">
+        <h5>Pikachu-EX</h5>
+        <span class="subtitle">XY—Promo</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/XYP/XYP_EN_XY124.png" alt="Pikachu-" />
     </a>
 </div>
 
@@ -3127,10 +4479,10 @@ right wavelength to make its foes most drowsy.
 
 
 <div>
-    <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex5/63/">
-        <h5>Jigglypuff</h5>
-        <span class="subtitle">EX Hidden Legends</span>
-        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX5/EX5_EN_63.png" alt="Jigglypuff" />
+    <a href="/us/pokemon-tcg/pokemon-cards/platinum-series/pl2/113/">
+        <h5>Flying Pikachu</h5>
+        <span class="subtitle">Platinum—Rising Rivals</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/PL2/PL2_EN_113.png" alt="Flying Pikachu" />
     </a>
 </div>
 
@@ -3140,10 +4492,10 @@ right wavelength to make its foes most drowsy.
 
 
 <div>
-    <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xy1/88/">
-        <h5>Jigglypuff</h5>
-        <span class="subtitle">XY</span>
-        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY1/XY1_EN_88.png" alt="Jigglypuff" />
+    <a href="/us/pokemon-tcg/pokemon-cards/sm-series/smp/SM108/">
+        <h5>Ash&#39;s Pikachu</h5>
+        <span class="subtitle">Sun &amp; Moon Promo</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM108.png" alt="Ash&#39;s Pikachu" />
     </a>
 </div>
 
@@ -3153,114 +4505,712 @@ right wavelength to make its foes most drowsy.
 
 
 <div>
-    <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex6/65/">
-        <h5>Jigglypuff</h5>
-        <span class="subtitle">EX Fire Red &amp; Leaf Green</span>
-        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX6/EX6_EN_65.png" alt="Jigglypuff" />
-    </a>
-</div>
-
-
-
-  
-
-
-<div>
-    <a href="/us/pokemon-tcg/pokemon-cards/bw-series/bwp/BW65/">
-        <h5>Jigglypuff</h5>
-        <span class="subtitle">BW—Promo</span>
-        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW65.png" alt="Jigglypuff" />
-    </a>
-</div>
-
-
-
-  
-
-
-<div>
-    <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex14/53/">
-        <h5>Jigglypuff</h5>
-        <span class="subtitle">EX Crystal Guardians</span>
-        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX14/EX14_EN_53.png" alt="Jigglypuff" />
-    </a>
-</div>
-
-
-
-  
-
-
-<div>
-    <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xy10/65/">
-        <h5>Jigglypuff</h5>
-        <span class="subtitle">XY—Fates Collide</span>
-        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY10/XY10_EN_65.png" alt="Jigglypuff" />
-    </a>
-</div>
-
-
-
-  
-
-
-<div>
-    <a href="/us/pokemon-tcg/pokemon-cards/diamond-pearl-series/dp4/72/">
-        <h5>Jigglypuff</h5>
-        <span class="subtitle">Diamond &amp; Pearl—Great Encounters</span>
-        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/DP4/DP4_EN_72.png" alt="Jigglypuff" />
-    </a>
-</div>
-
-
-
-  
-
-
-<div>
-    <a href="/us/pokemon-tcg/pokemon-cards/sm-series/sm4/71/">
-        <h5>Jigglypuff</h5>
-        <span class="subtitle">Crimson Invasion</span>
-        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SM4/SM4_EN_71.png" alt="Jigglypuff" />
-    </a>
-</div>
-
-
-
-  
-
-
-<div>
-    <a href="/us/pokemon-tcg/pokemon-cards/hgss-series/hgss1/68/">
-        <h5>Jigglypuff</h5>
-        <span class="subtitle">HeartGold &amp; SoulSilver</span>
-        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/HGSS1/HGSS1_EN_68.png" alt="Jigglypuff" />
-    </a>
-</div>
-
-
-
-  
-
-
-<div>
-    <a href="/us/pokemon-tcg/pokemon-cards/sm-series/sm8/133/">
-        <h5>Jigglypuff</h5>
-        <span class="subtitle">Lost Thunder</span>
-        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SM8/SM8_EN_133.png" alt="Jigglypuff" />
-    </a>
-</div>
-
-
-
-  
-
-
-<div>
-    <a href="/us/pokemon-tcg/pokemon-cards/bw-series/bw4/78/">
-        <h5>Jigglypuff</h5>
+    <a href="/us/pokemon-tcg/pokemon-cards/bw-series/bw4/39/">
+        <h5>Pikachu</h5>
         <span class="subtitle">Black &amp; White—Next Destinies</span>
-        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/BW4/BW4_EN_78.png" alt="Jigglypuff" />
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/BW4/BW4_EN_39.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/sm-series/sm4/30/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">Crimson Invasion</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SM4/SM4_EN_30.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xy8/48/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">XY–BREAKthrough</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY8/XY8_EN_48.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex13/79/">
+        <h5>Pikachu δ</h5>
+        <span class="subtitle">EX Holon Phantoms</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX13/EX13_EN_79.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/pop-series/pop5/13/">
+        <h5>Pikachu δ</h5>
+        <span class="subtitle">POP Series 5</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/POP5/POP_5_Card_13.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/sm-series/smp/SM76/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">Sun &amp; Moon Promo</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM76.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex4/43/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">EX Team Magma vs. Team Aqua</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX4/EX4_EN_43.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xyp/XY174/">
+        <h5>Pikachu-EX</h5>
+        <span class="subtitle">XY—Promo</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/XYP/XYP_EN_XY174.png" alt="Pikachu-" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/platinum-series/pl2/114/">
+        <h5>Surfing Pikachu</h5>
+        <span class="subtitle">Platinum—Rising Rivals</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/PL2/PL2_EN_114.png" alt="Surfing Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/sm-series/smp/SM109/">
+        <h5>Ash&#39;s Pikachu</h5>
+        <span class="subtitle">Sun &amp; Moon Promo</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM109.png" alt="Ash&#39;s Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/bw-series/bw7/50/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">Black &amp; White—Boundaries Crossed</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/BW7/BW7_EN_50.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex16/57/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">EX Power Keepers</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX16/EX16_EN_57.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/xy-series/g1/26/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">Generations</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/G1/G1_EN_26.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/sm-series/smp/SM81/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">Sun &amp; Moon Promo</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM81.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/pop-series/pop6/9/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">POP Series 6</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/POP6/POP_6_9.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex6/74/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">EX Fire Red &amp; Leaf Green</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX6/EX6_EN_74.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xyp/XY84/">
+        <h5>Pikachu-EX</h5>
+        <span class="subtitle">XY—Promo</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/XYP/XYP_EN_XY84.png" alt="Pikachu-" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/platinum-series/pl3/120/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">Platinum—Supreme Victors</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/PL3/PL3_EN_120.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/sm-series/smp/SM110/">
+        <h5>Ash&#39;s Pikachu</h5>
+        <span class="subtitle">Sun &amp; Moon Promo</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM110.png" alt="Ash&#39;s Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/bw-series/bw11/RC7/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">Black &amp; White—Legendary Treasures</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/BW11/BW11_EN_RC7.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/diamond-pearl-series/dp2/94/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">Diamond &amp; Pearl—Mysterious Treasures</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/DP2/DP2_EN_94.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/xy-series/g1/RC29/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">Generations</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/G1/G1_EN_RC29.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/sm-series/smp/SM86/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">Sun &amp; Moon Promo</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM86.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/pop-series/pop9/15/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">POP Series 9</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/POP9/POP_9_Cards_15.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex9/60/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">EX Emerald</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX9/EX9_EN_60.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xyp/XY89/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">XY—Promo</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/XYP/XYP_EN_XY89.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/platinum-series/pl4/71/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">Platinum Arceus</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/PL4/PL4_EN_71.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/sm-series/smp/SM111/">
+        <h5>Ash&#39;s Pikachu</h5>
+        <span class="subtitle">Sun &amp; Moon Promo</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM111.png" alt="Ash&#39;s Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xy1/42/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">XY</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY1/XY1_EN_42.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/diamond-pearl-series/dp5/70/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">Diamond &amp; Pearl—Majestic Dawn</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/DP5/DP5_EN_70.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xy12/110/">
+        <h5>Flying Pikachu</h5>
+        <span class="subtitle">XY—Evolutions</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY12/XY12_EN_110.png" alt="Flying Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/hgss-series/hgss1/78/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">HeartGold &amp; SoulSilver</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/HGSS1/HGSS1_EN_78.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/sm-series/smp/SM98/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">Sun &amp; Moon Promo</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM98.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex12/93/">
+        <h5>Pikachu δ</h5>
+        <span class="subtitle">EX Legend Maker</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX12/EX12_EN_93.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xyp/XY95/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">XY—Promo</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/XYP/XYP_EN_XY95.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/pop-series/pop2/16/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">POP Series 2</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/POP2/POP%20Series%202_EN_16.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/sm-series/smp/SM112/">
+        <h5>Ash&#39;s Pikachu</h5>
+        <span class="subtitle">Sun &amp; Moon Promo</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM112.png" alt="Ash&#39;s Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/hgss-series/hsp/HGSS03/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">HS—Promo</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/HSP/HSP_EN_HGSS03.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/diamond-pearl-series/dp7/70/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">Diamond &amp; Pearl—Stormfront</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/DP7/DP7_EN_70.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xy12/111/">
+        <h5>Surfing Pikachu</h5>
+        <span class="subtitle">XY—Evolutions</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY12/XY12_EN_111.png" alt="Surfing Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/hgss-series/hgss3/61/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">HS—Undaunted</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/HGSS3/HGSS3_EN_61.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/sm-series/sm3/40/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">Burning Shadows</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SM3/SM3_EN_40.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex13/104/">
+        <h5>Pikachu ★</h5>
+        <span class="subtitle">EX Holon Phantoms</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX13/EX13_EN_104.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xy3/27/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">XY—Furious Fists</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY3/XY3_EN_27.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/pop-series/pop4/13/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">POP Series 4</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/POP4/POP%20Series%204_Cards_EN_13.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/sm-series/smp/SM113/">
+        <h5>Ash&#39;s Pikachu</h5>
+        <span class="subtitle">Sun &amp; Moon Promo</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM113.png" alt="Ash&#39;s Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/bw-series/bwp/BW54/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">BW—Promo</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/platinum-series/pl2/112/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">Platinum—Rising Rivals</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/PL2/PL2_EN_112.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xy12/35/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">XY—Evolutions</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY12/XY12_EN_35.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/bw-series/bw1/PIKA/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">Black &amp; White</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/BW1/BW1_EN_PIKA.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/sm-series/sm35/28/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">Shining Legends</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SM35/SM35_EN_28.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/xy-series/xy6/20/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">XY—Roaring Skies</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY6/XY6_EN_20.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/ex-series/ex13/78/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">EX Holon Phantoms</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/EX13/EX13_EN_78.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/pop-series/pop5/12/">
+        <h5>Pikachu</h5>
+        <span class="subtitle">POP Series 5</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/POP5/POP_5_Card_12.png" alt="Pikachu" />
+    </a>
+</div>
+
+
+
+  
+
+
+<div>
+    <a href="/us/pokemon-tcg/pokemon-cards/sm-series/smp/SM114/">
+        <h5>Ash&#39;s Pikachu</h5>
+        <span class="subtitle">Sun &amp; Moon Promo</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM114.png" alt="Ash&#39;s Pikachu" />
     </a>
 </div>
 
@@ -3273,12 +5223,475 @@ right wavelength to make its foes most drowsy.
   
   
   
+    
+
+<section id="homepage-video-slider"
+         class="slider-widget generic-slider video-slider preload-images
+  
+  
+  
+  
+  
+  
+  ">
+
+
+  <div class="slider-title">
+    <div class="column-12 push-1">
+      <h3 class="pokemon-character-slider-title">
+        <span class="notch-left-top-outer"></span>
+        
+        <span class="icon icon_joystick"></span>
+        
+        Pikachu Downloads
+      </h3>
+    </div>
+  </div>
+
+
+
+  <div class="slider-wrapper">
+    <ul class="slider">
+    
+      
+
+
+<li class="match" data-analytics-label="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/_downloads/movie14_wallpaper3_th_169.jpg | /us/pokedex/pikachu"
+    data-content-id="item-episodes"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Episode"
+    data-content-download="">
+    
+
+    <div class="poster">
+        
+
+        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/_downloads/movie14_wallpaper3_th_169.jpg"
+                class="preload"
+                alt="None">
+    </div>
+
+  
+
+  <div class="text">
+    
+    
+  </div>
+
+  <span class="notch-bottom-center-small"></span>
+
+  
+  <a href="/us/pokedex/downloads/pokemon-the-movie-berries-wallpaper" class="block-link" title="None">
+    <span class="offscreen">
+      
+      
+      None
+    </span>
+  </a>
+  
+</li>
+
+    
+      
+
+
+<li class="match" data-analytics-label="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/_downloads/movie14_wallpaper2_th_169.jpg | /us/pokedex/pikachu"
+    data-content-id="item-episodes"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Episode"
+    data-content-download="">
+    
+
+    <div class="poster">
+        
+
+        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/_downloads/movie14_wallpaper2_th_169.jpg"
+                class="preload"
+                alt="None">
+    </div>
+
+  
+
+  <div class="text">
+    
+    
+  </div>
+
+  <span class="notch-bottom-center-small"></span>
+
+  
+  <a href="/us/pokedex/downloads/pokemon-the-movie-victini-wallpaper" class="block-link" title="None">
+    <span class="offscreen">
+      
+      
+      None
+    </span>
+  </a>
+  
+</li>
+
+    
+      
+
+
+<li class="match" data-analytics-label="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/_downloads/movie14_wallpaper4_th_169.jpg | /us/pokedex/pikachu"
+    data-content-id="item-episodes"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Episode"
+    data-content-download="">
+    
+
+    <div class="poster">
+        
+
+        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/_downloads/movie14_wallpaper4_th_169.jpg"
+                class="preload"
+                alt="None">
+    </div>
+
+  
+
+  <div class="text">
+    
+    
+  </div>
+
+  <span class="notch-bottom-center-small"></span>
+
+  
+  <a href="/us/pokedex/downloads/pokemon-the-movie-collage-wallpaper" class="block-link" title="None">
+    <span class="offscreen">
+      
+      
+      None
+    </span>
+  </a>
+  
+</li>
+
+    
+      
+
+
+<li class="match" data-analytics-label="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/_downloads/movie14_wallpaper1_th_169.jpg | /us/pokedex/pikachu"
+    data-content-id="item-episodes"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Episode"
+    data-content-download="">
+    
+
+    <div class="poster">
+        
+
+        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/_downloads/movie14_wallpaper1_th_169.jpg"
+                class="preload"
+                alt="None">
+    </div>
+
+  
+
+  <div class="text">
+    
+    
+  </div>
+
+  <span class="notch-bottom-center-small"></span>
+
+  
+  <a href="/us/pokedex/downloads/pokemon-the-movie-zekrom-wallpaper" class="block-link" title="None">
+    <span class="offscreen">
+      
+      
+      None
+    </span>
+  </a>
+  
+</li>
+
+    
+      
+
+
+<li class="match" data-analytics-label="https://assets.pokemon.com/assets/cms2/img/video-games/_downloads/pokepark2/pokepark2_wallpaper2_th_169.jpg | /us/pokedex/pikachu"
+    data-content-id="item-episodes"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Episode"
+    data-content-download="">
+    
+
+    <div class="poster">
+        
+
+        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/video-games/_downloads/pokepark2/pokepark2_wallpaper2_th_169.jpg"
+                class="preload"
+                alt="None">
+    </div>
+
+  
+
+  <div class="text">
+    
+    
+  </div>
+
+  <span class="notch-bottom-center-small"></span>
+
+  
+  <a href="/us/pokedex/downloads/pokepark-2-wonders-beyond-pikachu-wallpaper" class="block-link" title="None">
+    <span class="offscreen">
+      
+      
+      None
+    </span>
+  </a>
+  
+</li>
+
+    
+      
+
+
+<li class="match" data-analytics-label="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/_downloads/movie13_wallpaper3_th_169.jpg | /us/pokedex/pikachu"
+    data-content-id="item-episodes"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Episode"
+    data-content-download="">
+    
+
+    <div class="poster">
+        
+
+        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/_downloads/movie13_wallpaper3_th_169.jpg"
+                class="preload"
+                alt="None">
+    </div>
+
+  
+
+  <div class="text">
+    
+    
+  </div>
+
+  <span class="notch-bottom-center-small"></span>
+
+  
+  <a href="/us/pokedex/downloads/zoroark-master-of-illusions-wallpaper-3" class="block-link" title="None">
+    <span class="offscreen">
+      
+      
+      None
+    </span>
+  </a>
+  
+</li>
+
+    
+      
+
+
+<li class="match" data-analytics-label="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/_downloads/movie13_wallpaper4_th_169.jpg | /us/pokedex/pikachu"
+    data-content-id="item-episodes"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Episode"
+    data-content-download="">
+    
+
+    <div class="poster">
+        
+
+        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/_downloads/movie13_wallpaper4_th_169.jpg"
+                class="preload"
+                alt="None">
+    </div>
+
+  
+
+  <div class="text">
+    
+    
+  </div>
+
+  <span class="notch-bottom-center-small"></span>
+
+  
+  <a href="/us/pokedex/downloads/zoroark-master-of-illusions-wallpaper-4" class="block-link" title="None">
+    <span class="offscreen">
+      
+      
+      None
+    </span>
+  </a>
+  
+</li>
+
+    
+      
+
+
+<li class="match" data-analytics-label="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/_downloads/movie13_wallpaper1_th_169.jpg | /us/pokedex/pikachu"
+    data-content-id="item-episodes"
+    data-content-type="Slider"
+    data-content-variation="slideCenter"
+    data-content-location=""
+    data-content-category="Episode"
+    data-content-download="">
+    
+
+    <div class="poster">
+        
+
+        <img data-preload-src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/_downloads/movie13_wallpaper1_th_169.jpg"
+                class="preload"
+                alt="None">
+    </div>
+
+  
+
+  <div class="text">
+    
+    
+  </div>
+
+  <span class="notch-bottom-center-small"></span>
+
+  
+  <a href="/us/pokedex/downloads/zoroark-master-of-illusions-wallpaper-1" class="block-link" title="None">
+    <span class="offscreen">
+      
+      
+      None
+    </span>
+  </a>
+  
+</li>
+
+    
+    </ul>
+  </div><!-- class="slider-wrapper" -->
+
+
+
+  <div class="slider-more-button">
+    <div class="column-12 push-1">
+      <div class="content-block content-block-full">
+        <a class="button button-black right "
+           
+           
+           href="/us/pokedex/downloads/">View All Downloads</a>
+      </div>
+    </div>
+  </div>
+
+
+
+<noscript>
+
+  
+<div>
+    <a href="/us/pokedex/downloads/pokemon-the-movie-berries-wallpaper">
+        <h5></h5>
+        <span class="subtitle">None</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/_downloads/movie14_wallpaper3_th_169.jpg" alt="None" />
+    </a>
+</div>
+
+
+  
+<div>
+    <a href="/us/pokedex/downloads/pokemon-the-movie-victini-wallpaper">
+        <h5></h5>
+        <span class="subtitle">None</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/_downloads/movie14_wallpaper2_th_169.jpg" alt="None" />
+    </a>
+</div>
+
+
+  
+<div>
+    <a href="/us/pokedex/downloads/pokemon-the-movie-collage-wallpaper">
+        <h5></h5>
+        <span class="subtitle">None</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/_downloads/movie14_wallpaper4_th_169.jpg" alt="None" />
+    </a>
+</div>
+
+
+  
+<div>
+    <a href="/us/pokedex/downloads/pokemon-the-movie-zekrom-wallpaper">
+        <h5></h5>
+        <span class="subtitle">None</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/_downloads/movie14_wallpaper1_th_169.jpg" alt="None" />
+    </a>
+</div>
+
+
+  
+<div>
+    <a href="/us/pokedex/downloads/pokepark-2-wonders-beyond-pikachu-wallpaper">
+        <h5></h5>
+        <span class="subtitle">None</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/video-games/_downloads/pokepark2/pokepark2_wallpaper2_th_169.jpg" alt="None" />
+    </a>
+</div>
+
+
+  
+<div>
+    <a href="/us/pokedex/downloads/zoroark-master-of-illusions-wallpaper-3">
+        <h5></h5>
+        <span class="subtitle">None</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/_downloads/movie13_wallpaper3_th_169.jpg" alt="None" />
+    </a>
+</div>
+
+
+  
+<div>
+    <a href="/us/pokedex/downloads/zoroark-master-of-illusions-wallpaper-4">
+        <h5></h5>
+        <span class="subtitle">None</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/_downloads/movie13_wallpaper4_th_169.jpg" alt="None" />
+    </a>
+</div>
+
+
+  
+<div>
+    <a href="/us/pokedex/downloads/zoroark-master-of-illusions-wallpaper-1">
+        <h5></h5>
+        <span class="subtitle">None</span>
+        <img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/_downloads/movie13_wallpaper1_th_169.jpg" alt="None" />
+    </a>
+</div>
+
+
+</noscript>
+
+</section>
+
+  
 
 <div id="pokedex-auth-error-modal" class="popup user-alert">
   <div class="content">
     <h3>Login Required</h3>
     <p>You need to have a Pokémon Trainer Club account to save your Favorite Pokémon!</p>
-    <a href="/us/pokemon-trainer-club/login?_rd=/us/pokedex/jigglypuff" class="button arrow-left button-green sign-in">Log In</a>
+    <a href="/us/pokemon-trainer-club/login?_rd=/us/pokedex/pikachu" class="button arrow-left button-green sign-in">Log In</a>
     <a href="/us/pokemon-trainer-club/sign-up/" class="button button-blue signup">Sign Up</a>
     <a href="#" class="button no-arrow button-grey closeBtn">No Thanks</a>
   </div>
@@ -3288,7 +5701,7 @@ right wavelength to make its foes most drowsy.
   <div class="content">
     <h3>Login Required</h3>
     <p>Log in to your Pokémon Trainer Club account to add Pokémon to your collection!</p>
-    <a href="/us/pokemon-trainer-club/login?_rd=/us/pokedex/jigglypuff" class="button arrow-left button-green sign-in">Log In</a>
+    <a href="/us/pokemon-trainer-club/login?_rd=/us/pokedex/pikachu" class="button arrow-left button-green sign-in">Log In</a>
     <a href="/us/pokemon-trainer-club/sign-up/" class="button button-blue signup">Sign Up</a>
     <a href="#" class="button no-arrow button-grey closeBtn">No Thanks</a>
   </div>

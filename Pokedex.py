@@ -1,6 +1,6 @@
 import urllib2
 
-response = urllib2.urlopen("https://www.pokemon.com/us/pokedex/jigglypuff")
+response = urllib2.urlopen("https://www.pokemon.com/us/pokedex/pikachu")
 
 page = response.read()
 
@@ -73,7 +73,7 @@ q = 0
 for x in inq:
 	search = "<div class=\"dtm-type\">"
   	if search in x:
-		q = q + 1
+  		q = q + 1
 	
 	searcht = "<a href=\"/us/pokedex/?type"
 	if searcht in x and q == 1:
@@ -97,17 +97,16 @@ for x in inq:
 	search = "<div class=\"dtm-weaknesses\">"
   	if search in x:
 		q = q + 1
-		print "yes"
 
-	#searcht = "?weakness="
-	#if searcht in x and q == 1:
-	#		print "yes"
+	searcht = "<span>"
+	if searcht in x and q == 1:
+		
+		a1 = ' '.join(x.split())
+		a1 = a1[6:]
+		print "Weakness " + a1 
 
-	#	print "Type " + a
-	if( q == 1) and (' '.join(next(inq).split()) == "</div>"):
+	if( q == 1) and ("</div>" in ' '.join(next(inq).split())):
 		break
-	else:
-		print x
 inq.close()
 
 
