@@ -2,127 +2,245 @@ import Tkinter
 from Tkinter import *
 import ttk
 import urllib2
+import os, sys
+import urllib
+import time
 
 class main:
 
 	def __init__(self):
 		self.gui()
 
+	def getresult(self):
+
+		a = self.listbox.get(self.listbox.curselection())
+		#print a
+		self.dire.set(a)		
+
+		a = a + "\n"
+		self.nume.set("#" + self.dictn[a]['Num'])
+
+		imge = PhotoImage(file=self.dictn[a]['Img'])
+		self.canvas.create_image(0,0, image=imge, anchor = "nw")
+
+		self.mw2.grid(row = 0, column = 1, columnspan = 1)
+		self.mww.geometry("1200x800")
+
+
+	def search(self): 
+		self.listbox.delete(0, END)
+
+		op = open("example.txt","r")
+		st = self.entry.get().lower()
+		vl = self.cb.get().lower()
+		if st == "":
+			if vl != "All types":
+				for x in op:
+					#n = x[:-1]
+					va = self.dictn[x]['Type']
+					if ", " in va:
+						va = va.split(", ")
+					for j in va:
+						if j == vl:
+							self.listbox.insert(0,x[:-1])
+
+		elif st != "":
+			if vl != "All types":
+				for x in op:
+					if st in x.lower():
+						#n = x[:-1]
+						va = self.dictn[x]['Type']
+						if ", " in va:
+							va = va.split(", ")
+						for j in va:
+							if j == vl:
+								self.listbox.insert(0,x[:-1])
+
+		elif st != "":
+			if vl == "All types":
+				for x in op:
+					if st in x.lower():
+						self.listbox.insert(0,x[:-1])
+
+
+
+
 	def getUrl(self):
-		response = urllib2.urlopen("https://www.pokemon.com/us/pokedex/pikachu")
 
-		page = response.read()
+		self.dictn = {}
+		self.typel = []
 
-		out = open("html.txt", "w")
-		out.write(page)
-		out.close()
+		op = open("example.txt", "r")
+		i = 0
+		for name in op:
+			self.progressbar.step(1)
+			self.mw.update()
+			time.sleep(0.1)
+			response = urllib2.urlopen("https://www.pokemon.com/us/pokedex/"+name)
 
-		q = 0
-		inq = open("html.txt", "r")
-		for x in inq:
-			search = "<span class=\"attribute-title\">Height</span>"
+			page = response.read()
 
-			if search in x:
-				q = q + 1
-			if search in x and q == 1:
-				a =  next(inq)
-				a = ' '.join(a.split())
-				# print a
-				a = a[30:-7]
-				print "Height = " + a
-		inq.close()
+			out = open("html.txt", "w")
+			out.write(page)
+			out.close()
+			name1 = name[:-2]
+			#name = name[:-4]
+			self.dictn[name] = {}
+			q = 0
+			inq = open("html.txt", "r")
+			for x in inq:
+				search = "<span class=\"attribute-title\">Height</span>"
 
-		q = 0
-		inq = open("html.txt", "r")
-		for x in inq:
-			search = "<span class=\"attribute-title\">Category</span>"
-			if search in x:
-				q = q + 1
-			if search in x and q == 1:
-				a =  next(inq)
-				a = ' '.join(a.split())
-				# print a
-				a = a[30:-7]
-				print "Catogory = " + a
-		inq.close()
+				if search in x:
+					q = q + 1
+				if search in x and q == 1:
+					a =  next(inq)
+					a = ' '.join(a.split())
+					# print a
+					a = a[30:-7]
+					self.dictn[name]['Height'] = a
+					#print "Height = " + a
+			inq.close()
 
-		q = 0
-		inq = open("html.txt", "r")
-		for x in inq:
-			search = "<span class=\"attribute-title\">Weight</span>"
-			if search in x:
-				q = q + 1
-			if search in x and q == 1:
-				a =  next(inq)
-				a = ' '.join(a.split())
-				# print a
-				a = a[30:-7]
-				print "Weight = " + a
-		inq.close()
+			q = 0
+			inq = open("html.txt", "r")
+			for x in inq:
+				search = "<span class=\"attribute-title\">Category</span>"
+				if search in x:
+					q = q + 1
+				if search in x and q == 1:
+					a =  next(inq)
+					a = ' '.join(a.split())
+					# print a
+					a = a[30:-7]
+					#print "Catogory = " + a
+					self.dictn[name]['Category'] = a
+			inq.close()
+
+			q = 0
+			inq = open("html.txt", "r")
+			for x in inq:
+				search = "<span class=\"attribute-title\">Weight</span>"
+				if search in x:
+					q = q + 1
+				if search in x and q == 1:
+					a =  next(inq)
+					a = ' '.join(a.split())
+					# print a
+					a = a[30:-7]
+					#print "Weight = " + a
+					self.dictn[name]['Weight'] = a
+			inq.close()
 
 
-		inq = open("html.txt", "r")
-		q = 0
-		for x in inq:
-			search = "<span class=\"attribute-title\">Abilities</span>"
-		  	if search in x:
-				q = q + 1
-			
-			searcht = "<span class=\"attribute-value\">"
-			if searcht in x and q == 1:
-				a = ' '.join(x.split())
-				a = a[30:-7]
-				print "Abilities " + a
-			if( q == 1) and (' '.join(next(inq).split()) == "</div>"):
-				break
-		inq.close()
-
-		inq = open("html.txt", "r")
-		q = 0
-		for x in inq:
-			search = "<div class=\"dtm-type\">"
-		  	if search in x:
-		  		q = q + 1
-			
-			searcht = "<a href=\"/us/pokedex/?type"
-			if searcht in x and q == 1:
-				a1 = ' '.join(x.split())
-				a1 = a1[27:-4]
-				a = ""
-				for w in range(len(a1)):
-					if a1[w] == "\"":
-						break
-					else:
-						a = a+a1[w]
-
-				print "Type " + a
-			if( q == 1) and (' '.join(next(inq).split()) == "</div>"):
-				break
-		inq.close()
-
-		inq = open("html.txt", "r")
-		q = 0
-		for x in inq:
-			search = "<div class=\"dtm-weaknesses\">"
-		  	if search in x:
-				q = q + 1
-
-			searcht = "<span>"
-			if searcht in x and q == 1:
+			inq = open("html.txt", "r")
+			q = 0
+			t = ""
+			for x in inq:
+				search = "<span class=\"attribute-title\">Abilities</span>"
+			  	if search in x:
+					q = q + 1
 				
-				a1 = ' '.join(x.split())
-				a1 = a1[6:]
-				print "Weakness " + a1 
+				searcht = "<span class=\"attribute-value\">"
+				if searcht in x and q == 1:
+					a = ' '.join(x.split())
+					a = a[30:-7]
+					#print "Abilities " + a
+					t = t + a + ", "
+				if( q == 1) and (' '.join(next(inq).split()) == "</div>"):
+					break
+			t = t[:-2]
+			self.dictn[name]['Abilities'] = t
+			inq.close()
 
-			if( q == 1) and ("</div>" in ' '.join(next(inq).split())):
-				break
-		inq.close()
+			inq = open("html.txt", "r")
+			q = 0
+			t = ""
+			for x in inq:
+				search = "<div class=\"dtm-type\">"
+			  	if search in x:
+			  		q = q + 1
+				
+				searcht = "<a href=\"/us/pokedex/?type"
+				if searcht in x and q == 1:
+					a1 = ' '.join(x.split())
+					a1 = a1[27:-4]
+					a = ""
+					for w in range(len(a1)):
+						if a1[w] == "\"":
+							break
+						else:
+							a = a+a1[w]
+					if a not in self.typel:
+						self.typel.append(a)
+					#print "Type " + a
+					t = t + a + ", "
+				if( q == 1) and (' '.join(next(inq).split()) == "</div>"):
+					break
+			t = t[:-2]
+			self.dictn[name]['Type'] = t
+			inq.close()
+
+			inq = open("html.txt", "r")
+			q = 0
+			t= ""
+			for x in inq:
+				search = "<div class=\"dtm-weaknesses\">"
+			  	if search in x:
+					q = q + 1
+
+				searcht = "<span>"
+				if searcht in x and q == 1:
+					
+					a1 = ' '.join(x.split())
+					a1 = a1[6:]
+					#print "Weakness " + a1 
+					t = t + a1 + ", "
+
+				if( q == 1) and ("</div>" in ' '.join(next(inq).split())):
+					break
+			t = t[:-2]
+			self.dictn[name]['Weakness'] = t
+			inq.close()
+
+			path = os.getcwd()+"/Images"
+
+			if not os.path.exists(path):
+				os.mkdir(path)
+			
+
+
+			inq = open("html.txt", "r")
+			for x in inq:
+				search = "<img class=\"active\" src=\"https://assets.pokemon.com/assets/cms2/img/pokedex/full/"
+
+				if search in x:
+					a = ""
+					a1 = x[33:]
+					for f in range(len(a1)):
+						if a1[f] == "\"":
+							break
+						else:
+							a = a + a1[f]
+
+					#print a
+					urllib.urlretrieve(a, "Images/"+name1+".png")
+					self.dictn[name]['Img'] = "Images/"+name1+".png"
+					a = a[56:-4]
+					#print a
+					self.dictn[name]['Num'] = a
+					break 	
+			inq.close()
+			self.cb['values'] = self.typel
+		op.close()
+
+
 
 	def gui(self):
 
 		self.mww = Tkinter.Tk()
 		self.mww.title("Pokedex")
-		self.mww.geometry("1200x800")
+		self.mww.geometry("600x800")
 
 
 		self.mw = Frame(self.mww, height = 800, width = 600)
@@ -193,7 +311,7 @@ class main:
 		self.subframe7.grid(row = 0, column = 1, columnspan = 1)
 		self.subframe7.pack_propagate(0)
 
-		self.btn_search = Button(self.subframe7, width = 8, height = 2, bg = "yellow", fg = "black", text = "Search") 
+		self.btn_search = Button(self.subframe7, width = 8, height = 2, bg = "yellow", fg = "black", text = "Search", command = self.search) 
 		self.btn_search.pack(side = TOP, expand = YES)
 
 		self.frame4 = Frame(self.mw, width = 600, height= 380, bg="red", highlightbackground="black", highlightcolor="black", highlightthickness=2)
@@ -224,7 +342,7 @@ class main:
 		self.subframe11.grid(row = 0, column = 1, columnspan = 1)
 		self.subframe11.pack_propagate(0)
 
-		self.btn_gpd = Button(self.subframe11, width = 10, height = 2, bg="yellow", fg="black", text = "Search \n Pokemon Data")
+		self.btn_gpd = Button(self.subframe11, width = 10, height = 2, bg="yellow", fg="black", text = "Search \n Pokemon Data", command = self.getresult)
 		self.btn_gpd.pack(side = TOP, expand = YES)
 
 
@@ -232,32 +350,52 @@ class main:
 		self.mw2 = Frame(self.mww, width=600, height = 800, bg="blue")
 		self.mw2.grid(row = 0, column = 1, columnspan = 1)
 		self.mw2.grid_propagate(0)
+		self.mw2.grid_forget()
 
 		self.tframe1 = Frame(self.mw2, width = 600, height = 80, bg="red")
 		self.tframe1.grid(row = 0, column = 0, columnspan = 1)
+		self.tframe1.pack_propagate(0)
 
-		self.tframe2 = Frame(self.mw2, width = 600, height = 80, bg="blue")
+		self.dire = StringVar()
+		self.dire.set("")
+		self.name = Label(self.tframe1, bg="red", fg = "black", textvariable= self.dire)
+		self.name.config(font=("Airal", 28))
+		self.name.pack(side = TOP, expand = YES)
+
+		self.tframe2 = Frame(self.mw2, width = 600, height = 80, bg="red")
 		self.tframe2.grid(row = 1, column = 0, columnspan = 1)
+		self.tframe2.pack_propagate(0)
 
-		self.tframe3 = Frame(self.mw2, width = 600, height = 400, bg="red")
+		self.nume = StringVar()
+		self.nume.set("")
+		self.name = Label(self.tframe2, bg="red", fg = "black", textvariable= self.nume)
+		self.name.config(font=("Airal", 20))
+		self.name.pack(side = TOP, expand = YES)
+
+		self.tframe3 = Frame(self.mw2, width = 600, height = 500)
 		self.tframe3.grid(row = 2, column = 0, columnspan = 1)
+		self.tframe3.pack_propagate(0)
 
-		self.tframe4 = Frame(self.mw2, width = 600, height = 40, bg="blue")
+		self.canvas = Canvas(self.tframe3, width=475, height=475)
+		self.canvas.pack(side = TOP, expand = YES)
+
+
+		self.tframe4 = Frame(self.mw2, width = 600, height = 20, bg="blue")
 		self.tframe4.grid(row = 3, column = 0, columnspan = 1)
 
-		self.tframe5 = Frame(self.mw2, width = 600, height = 40, bg="red")
+		self.tframe5 = Frame(self.mw2, width = 600, height = 20, bg="red")
 		self.tframe5.grid(row = 4, column = 0, columnspan = 1)
 
-		self.tframe6 = Frame(self.mw2, width = 600, height = 40, bg="blue")
+		self.tframe6 = Frame(self.mw2, width = 600, height = 20, bg="blue")
 		self.tframe6.grid(row = 5, column = 0, columnspan = 1)
 
-		self.tframe7 = Frame(self.mw2, width = 600, height = 40, bg="red")
+		self.tframe7 = Frame(self.mw2, width = 600, height = 20, bg="red")
 		self.tframe7.grid(row = 6, column = 0, columnspan = 1)
 
 		self.tframe8 = Frame(self.mw2, width = 600, height = 40, bg="blue")
 		self.tframe8.grid(row = 7, column = 0, columnspan = 1)
 
-		self.tframe9 = Frame(self.mw2, width = 600, height = 40, bg="green")
+		self.tframe9 = Frame(self.mw2, width = 600, height = 20, bg="green")
 		self.tframe9.grid(row = 8, column = 0, columnspan = 1)
 
 
@@ -270,4 +408,7 @@ class main:
 
 
 
-main().mww.mainloop()
+m = main()
+m.mww.mainloop()
+#print m.dictn
+

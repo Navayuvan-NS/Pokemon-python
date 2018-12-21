@@ -1,4 +1,6 @@
 import urllib2
+import os, sys
+import urllib
 
 def getUrl(dictn, name, typel):
 
@@ -10,6 +12,7 @@ def getUrl(dictn, name, typel):
 	out = open("html.txt", "w")
 	out.write(page)
 	out.close()
+	name1 = name
 	name = name[:-4]
 	dictn[name] = {}
 	q = 0
@@ -129,13 +132,45 @@ def getUrl(dictn, name, typel):
 	dictn[name]['Weakness'] = t
 	inq.close()
 
+	path = os.getcwd()+"/Images"
+
+	if not os.path.exists(path):
+		os.mkdir(path)
+	
+
+
+	inq = open("html.txt", "r")
+	for x in inq:
+		search = "<img class=\"active\" src=\"https://assets.pokemon.com/assets/cms2/img/pokedex/full/"
+
+		if search in x:
+			a = ""
+			a1 = x[33:]
+			for f in range(len(a1)):
+				if a1[f] == "\"":
+					break
+				else:
+					a = a + a1[f]
+
+			#print a
+			urllib.urlretrieve(a, "Images/"+name1+".png")
+			break 	
+	inq.close()
+
+
 	return dictn, typel
+
+
 
 dictn = {}
 typel = []
 file = open("all_pokemon.txt", "r")
+i = 0
 for x in file:
+	i = i + 1
 	dictn, typel = getUrl(dictn, x, typel)
+	print i
+#dictn, typel = getUrl(dictn, "pikachu", typel)
 
 print dictn
 
