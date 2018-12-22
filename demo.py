@@ -1,4 +1,5 @@
 from Tkinter import * 
+import Final_Pokedex
 root = Tk()
 canvas = Canvas(root, width=475, height=475)
 canvas.pack()

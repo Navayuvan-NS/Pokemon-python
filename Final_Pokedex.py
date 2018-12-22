@@ -5,6 +5,7 @@ import urllib2
 import os, sys
 import urllib
 import time
+from PIL import Image, ImageTk
 
 class main:
 
@@ -20,17 +21,42 @@ class main:
 		a = a + "\n"
 		self.nume.set("#" + self.dictn[a]['Num'])
 
-		imge = PhotoImage(file=self.dictn[a]['Img'])
-		self.canvas.create_image(0,0, image=imge, anchor = "nw")
+		imge = Image.open(self.dictn[a]['Img'])
+		self.tkimage = ImageTk.PhotoImage(imge)
+		self.canvas.config(image = self.tkimage)
 
+		q = self.dictn[a]['Type']
+		if ", " in q:
+			q = q.split()
+			self.type1.set(q[0])
+			self.type2.set(q[1])
+		else:
+			self.type1.set(q)
+			self.typet2.pack_forget()
+
+		h = self.dictn[a]['Height']
+		self.heightt.set("Height: "+h)
+
+		w = self.dictn[a]['Weight']
+		self.weightt.set("Weight: "+w)
+
+		c = self.dictn[a]['Category']
+		self.catt.set("Category: "+c)
+
+		ab = self.dictn[a]['Abilities']
+		self.abit.set("Abilities: "+ab)
+
+		we = self.dictn[a]['Weakness']
+		self.weakt.set("Weakness: "+we)
 		self.mw2.grid(row = 0, column = 1, columnspan = 1)
 		self.mww.geometry("1200x800")
+		self.mww.resizable(0,0)
 
 
 	def search(self): 
 		self.listbox.delete(0, END)
 
-		op = open("example.txt","r")
+		op = open("all_pokemon.txt","r")
 		st = self.entry.get().lower()
 		vl = self.cb.get().lower()
 		if st == "":
@@ -70,7 +96,7 @@ class main:
 		self.dictn = {}
 		self.typel = []
 
-		op = open("example.txt", "r")
+		op = open("all_pokemon.txt", "r")
 		i = 0
 		for name in op:
 			self.progressbar.step(1)
@@ -352,7 +378,7 @@ class main:
 		self.mw2.grid_propagate(0)
 		self.mw2.grid_forget()
 
-		self.tframe1 = Frame(self.mw2, width = 600, height = 80, bg="red")
+		self.tframe1 = Frame(self.mw2, width = 600, height = 60, bg="red")
 		self.tframe1.grid(row = 0, column = 0, columnspan = 1)
 		self.tframe1.pack_propagate(0)
 
@@ -362,41 +388,91 @@ class main:
 		self.name.config(font=("Airal", 28))
 		self.name.pack(side = TOP, expand = YES)
 
-		self.tframe2 = Frame(self.mw2, width = 600, height = 80, bg="red")
+		self.tframe2 = Frame(self.mw2, width = 600, height = 40, bg="red")
 		self.tframe2.grid(row = 1, column = 0, columnspan = 1)
 		self.tframe2.pack_propagate(0)
 
 		self.nume = StringVar()
 		self.nume.set("")
 		self.name = Label(self.tframe2, bg="red", fg = "black", textvariable= self.nume)
-		self.name.config(font=("Airal", 20))
+		self.name.config(font=("Airal", 18))
 		self.name.pack(side = TOP, expand = YES)
 
-		self.tframe3 = Frame(self.mw2, width = 600, height = 500)
+		self.tframe3 = Frame(self.mw2, width = 600, height = 480, bg="red")
 		self.tframe3.grid(row = 2, column = 0, columnspan = 1)
 		self.tframe3.pack_propagate(0)
 
-		self.canvas = Canvas(self.tframe3, width=475, height=475)
-		self.canvas.pack(side = TOP, expand = YES)
+		self.canvas = Label(self.tframe3, width=475, height=475, bg="red")
+		self.canvas.pack()
 
 
-		self.tframe4 = Frame(self.mw2, width = 600, height = 20, bg="blue")
+		self.tframe4 = Frame(self.mw2, width = 600, height = 45, bg="red")
 		self.tframe4.grid(row = 3, column = 0, columnspan = 1)
+		self.tframe4.pack_propagate(0)
 
-		self.tframe5 = Frame(self.mw2, width = 600, height = 20, bg="red")
+		self.type1 = StringVar()
+		self.type1.set("type")
+
+		self.typet1 = Label(self.tframe4, bg = "yellow", fg = "black", textvariable = self.type1)
+		self.typet1.pack(side=TOP, expand = YES)
+
+		self.type2 = StringVar()
+		self.type2.set("type2")
+
+		self.typet2 = Label(self.tframe4, bg = "green", fg = "black", textvariable = self.type2)
+		self.typet2.pack(side=BOTTOM, expand = YES)
+
+
+
+		self.tframe5 = Frame(self.mw2, width = 600, height = 35, bg="red")
 		self.tframe5.grid(row = 4, column = 0, columnspan = 1)
+		self.tframe5.pack_propagate(0)
 
-		self.tframe6 = Frame(self.mw2, width = 600, height = 20, bg="blue")
+		self.heightt = StringVar()
+		self.heightt.set("Height")
+
+		self.heightl = Label(self.tframe5, bg = "red", fg = "black", textvariable = self.heightt)
+		self.heightl.pack(side=TOP, expand = YES)
+
+		self.tframe6 = Frame(self.mw2, width = 600, height = 35, bg="red")
 		self.tframe6.grid(row = 5, column = 0, columnspan = 1)
+		self.tframe6.pack_propagate(0)
 
-		self.tframe7 = Frame(self.mw2, width = 600, height = 20, bg="red")
+		self.weightt = StringVar()
+		self.weightt.set("Weight")
+
+		self.weightl = Label(self.tframe6, bg = "red", fg = "black", textvariable = self.weightt)
+		self.weightl.pack(side=TOP, expand = YES)
+
+		self.tframe7 = Frame(self.mw2, width = 600, height = 35, bg="red")
 		self.tframe7.grid(row = 6, column = 0, columnspan = 1)
+		self.tframe7.pack_propagate(0)
 
-		self.tframe8 = Frame(self.mw2, width = 600, height = 40, bg="blue")
+		self.catt = StringVar()
+		self.catt.set("Catogory")
+
+		self.catl = Label(self.tframe7, bg = "red", fg = "black", textvariable = self.catt)
+		self.catl.pack(side=TOP, expand = YES)
+
+		self.tframe8 = Frame(self.mw2, width = 600, height = 35, bg="red")
 		self.tframe8.grid(row = 7, column = 0, columnspan = 1)
+		self.tframe8.pack_propagate(0)
+		self.abit = StringVar()
+		self.abit.set("Abilities")
 
-		self.tframe9 = Frame(self.mw2, width = 600, height = 20, bg="green")
+		self.abil = Label(self.tframe8, bg = "red", fg = "black", textvariable = self.abit)
+		self.abil.pack(side=TOP, expand = YES)
+
+
+		self.tframe9 = Frame(self.mw2, width = 600, height = 35, bg="red")
 		self.tframe9.grid(row = 8, column = 0, columnspan = 1)
+		self.tframe9.pack_propagate(0)
+
+		self.weakt = StringVar()
+		self.weakt.set("Abilities")
+
+		self.weakl = Label(self.tframe9, bg = "red", fg = "black", textvariable = self.weakt)
+		self.weakl.pack(side=TOP, expand = YES)
 
 
 
@@ -410,5 +486,3 @@ class main:
 
 m = main()
 m.mww.mainloop()
-#print m.dictn
-
